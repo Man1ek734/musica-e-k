@@ -1,828 +1,1093 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MUSICA Studium Muzyczne w Ełku – indywidualne zajęcia muzyczne prowadzone przez mgr Urszulę Staniek." />
-  <title>MUSICA Studium Muzyczne | Ełk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="MUSICA Studium Muzyczne w Ełku — mgr Urszula Staniek, muzykolog. Indywidualne zajęcia muzyczne w wyjątkowej atmosferze.">
+  <title>MUSICA — Studium Muzyczne w Ełku</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --black: #0a0a0a;
-      --dark: #141414;
-      --gray: #6d6d6d;
-      --light-gray: #ededed;
-      --white: #ffffff;
-      --max-width: 1180px;
+    :root{
+      --black:#050505;
+      --black2:#0e0e0e;
+      --white:#fff;
+      --paper:#f5f5f2;
+      --line:#dadada;
+      --muted:#737373;
+      --radius:26px;
+      --max:1240px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"DM Sans",Arial,sans-serif;
+      background:var(--paper);
+      color:var(--black);
+      overflow-x:hidden;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    body.menu-open{overflow:hidden}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    button{font:inherit}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--white);
-      color: var(--black);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    ::selection{background:#111;color:#fff}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .container {
-      width: min(92%, var(--max-width));
-      margin: 0 auto;
-    }
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+    .serif{font-family:"Playfair Display",Georgia,serif}
 
     /* NAV */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #e7e7e7;
-      z-index: 1000;
+    .nav-shell{
+      position:fixed;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(calc(100% - 34px),1260px);
+      z-index:100;
     }
 
-    .nav {
-      min-height: 88px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
+    nav{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding:0 16px 0 22px;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:0 18px 55px rgba(0,0,0,.08);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-radius:22px;
     }
 
-    .nav-logo img {
-      width: 230px;
-      height: auto;
+    .brand{
+      display:flex;
+      align-items:center;
+      min-width:210px;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+    .brand img{
+      width:190px;
+      max-height:54px;
+      object-fit:contain;
+      object-position:left center;
     }
 
-    .nav-links a {
-      position: relative;
-      padding: 8px 0;
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      list-style:none;
     }
 
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: var(--black);
-      transition: width 0.25s ease;
+    .navlinks a{
+      display:inline-flex;
+      align-items:center;
+      height:42px;
+      padding:0 15px;
+      border-radius:13px;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.02em;
+      transition:.25s;
     }
 
-    .nav-links a:hover::after {
-      width: 100%;
+    .navlinks a:hover{
+      background:#ededeb;
     }
 
-    .menu-btn {
-      display: none;
-      border: 0;
-      background: transparent;
-      font-size: 28px;
-      cursor: pointer;
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:0 18px;
+      height:46px;
+      color:#fff;
+      background:#050505;
+      border-radius:14px;
+      font-size:13px;
+      font-weight:700;
+      transition:.25s;
+    }
+
+    .nav-cta:hover{transform:translateY(-2px);background:#242424}
+    .nav-cta .dot{width:7px;height:7px;border-radius:50%;background:#fff}
+
+    .hamb{
+      display:none;
+      border:0;
+      background:#050505;
+      color:#fff;
+      width:46px;height:46px;
+      border-radius:14px;
+      cursor:pointer;
+      font-size:21px;
     }
 
     /* HERO */
-    .hero {
-      min-height: 100vh;
-      padding-top: 88px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
+    .hero{
+      min-height:100svh;
+      padding:124px 0 24px;
+    }
+
+    .hero-panel{
+      position:relative;
+      min-height:calc(100svh - 148px);
+      overflow:hidden;
+      background:var(--black);
+      color:#fff;
+      border-radius:34px;
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      box-shadow:0 40px 100px rgba(0,0,0,.16);
+    }
+
+    .hero-copy{
+      position:relative;
+      z-index:3;
+      padding:clamp(46px,6vw,82px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .badge{
+      width:max-content;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid #2e2e2e;
+      border-radius:999px;
+      padding:9px 13px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:#c9c9c9;
+      margin-bottom:34px;
+    }
+
+    .badge i{
+      display:block;
+      width:7px;height:7px;
+      background:#fff;
+      border-radius:50%;
+      box-shadow:0 0 0 5px rgba(255,255,255,.08);
+    }
+
+    h1{
+      font-size:clamp(58px,7.2vw,112px);
+      line-height:.88;
+      letter-spacing:-.065em;
+      max-width:880px;
+      font-weight:700;
+    }
+
+    h1 .soft{
+      display:block;
+      color:#7f7f7f;
+      font-weight:600;
+      font-style:italic;
+      letter-spacing:-.055em;
+    }
+
+    .hero-desc{
+      max-width:650px;
+      margin-top:32px;
+      font-size:clamp(16px,1.5vw,19px);
+      line-height:1.75;
+      color:#b8b8b8;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:38px;
+    }
+
+    .btn{
+      min-height:54px;
+      padding:0 23px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      border-radius:15px;
+      font-weight:700;
+      font-size:14px;
+      transition:.25s ease;
+      border:1px solid transparent;
+    }
+
+    .btn-white{
+      background:#fff;color:#050505;
+    }
+    .btn-white:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(255,255,255,.13)}
+    .btn-ghost{
+      color:#fff;border-color:#343434;background:#111;
+    }
+    .btn-ghost:hover{background:#191919;transform:translateY(-3px)}
+
+    .arrow{
+      width:28px;height:28px;border-radius:50%;
+      display:grid;place-items:center;
+      background:rgba(0,0,0,.08);
+    }
+
+    .hero-side{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:flex-end;
+      padding:34px;
+      min-height:580px;
+    }
+
+    .hero-card{
+      width:100%;
+      padding:26px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      backdrop-filter:blur(15px);
+      border-radius:24px;
+    }
+
+    .hero-card small{
+      display:block;
+      color:#858585;
+      font-size:11px;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .hero-card strong{
+      display:block;
+      font-size:25px;
+      line-height:1.15;
+      letter-spacing:-.03em;
+    }
+
+    .hero-card span{
+      display:block;
+      color:#aaa;
+      margin-top:6px;
+      font-size:14px;
+    }
+
+    /* decorative piano */
+    .piano{
+      position:absolute;
+      right:-4vw;
+      top:7%;
+      width:min(42vw,610px);
+      height:72%;
+      opacity:.94;
+      transform:rotate(-6deg);
+      pointer-events:none;
+    }
+
+    .piano-top{
+      position:absolute;
+      left:0;top:0;
+      width:88%;height:43%;
+      border:1px solid #343434;
+      border-radius:54% 46% 26% 30% / 55% 50% 38% 35%;
       background:
-        linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,.96) 49%, rgba(245,245,245,.96) 100%);
+        radial-gradient(circle at 20% 20%,#242424 0,#111 31%,#090909 72%);
+      box-shadow:inset 0 0 70px rgba(255,255,255,.03);
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: -100px;
-      bottom: -120px;
-      width: 640px;
-      height: 640px;
-      border: 1px solid #d7d7d7;
-      border-radius: 50%;
-      opacity: .7;
+    .keys{
+      position:absolute;
+      left:6%;
+      top:40%;
+      width:90%;
+      height:52%;
+      display:grid;
+      grid-template-columns:repeat(10,1fr);
+      gap:3px;
+      transform:perspective(900px) rotateX(12deg);
+      transform-origin:top;
     }
 
-    .hero-grid {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      align-items: center;
-      gap: 70px;
-      padding: 90px 0;
+    .key{
+      position:relative;
+      background:#efefed;
+      border-radius:0 0 8px 8px;
+      box-shadow:inset 0 -14px 20px rgba(0,0,0,.07);
     }
 
-    .hero-kicker {
-      display: inline-block;
-      margin-bottom: 20px;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gray);
+    .key:nth-child(1)::after,.key:nth-child(2)::after,.key:nth-child(4)::after,
+    .key:nth-child(5)::after,.key:nth-child(6)::after,.key:nth-child(8)::after,
+    .key:nth-child(9)::after{
+      content:"";
+      position:absolute;
+      right:-29%;
+      top:0;
+      width:55%;
+      height:60%;
+      background:#0c0c0c;
+      border-radius:0 0 6px 6px;
+      z-index:2;
+      box-shadow:0 10px 20px rgba(0,0,0,.35);
     }
 
-    .hero h1 {
-      font-size: clamp(48px, 7vw, 96px);
-      line-height: .98;
-      letter-spacing: -0.055em;
-      max-width: 780px;
+    .grain{
+      position:absolute;inset:0;
+      pointer-events:none;opacity:.18;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.23'/%3E%3C/svg%3E");
+      mix-blend-mode:soft-light;
     }
 
-    .hero h1 span {
-      display: block;
-      font-weight: 300;
-      color: #4c4c4c;
+    .scroll-note{
+      position:absolute;
+      bottom:24px;left:50%;
+      transform:translateX(-50%);
+      z-index:5;
+      display:flex;align-items:center;gap:10px;
+      color:#646464;
+      font-size:11px;text-transform:uppercase;letter-spacing:.18em;
     }
 
-    .hero-text {
-      margin-top: 28px;
-      max-width: 650px;
-      font-size: 18px;
-      color: #4e4e4e;
+    .scroll-line{
+      width:44px;height:1px;background:#3d3d3d;
     }
 
-    .hero-actions {
-      margin-top: 38px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
+    /* MARQUEE */
+    .marquee{
+      overflow:hidden;
+      padding:23px 0;
+      border-bottom:1px solid #d6d6d2;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 26px;
-      border: 1px solid var(--black);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: 13px;
-      transition: .25s ease;
+    .marquee-track{
+      display:flex;
+      width:max-content;
+      animation:move 25s linear infinite;
     }
 
-    .btn-dark {
-      background: var(--black);
-      color: var(--white);
+    .marquee-item{
+      display:flex;align-items:center;gap:28px;
+      padding-right:28px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      white-space:nowrap;
+      color:#4f4f4f;
     }
 
-    .btn-dark:hover {
-      background: #292929;
-      transform: translateY(-2px);
+    .marquee-item b{font-size:20px;color:#111}
+    @keyframes move{to{transform:translateX(-50%)}}
+
+    /* SECTION GENERAL */
+    section.content{
+      padding:130px 0;
     }
 
-    .btn-light {
-      background: var(--white);
-      color: var(--black);
+    .section-top{
+      display:grid;
+      grid-template-columns:.7fr 1.3fr;
+      gap:40px;
+      align-items:start;
+      margin-bottom:68px;
     }
 
-    .btn-light:hover {
-      background: var(--black);
-      color: var(--white);
-      transform: translateY(-2px);
+    .eyebrow{
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#777;
+      padding-top:13px;
     }
 
-    .hero-card {
-      background: var(--black);
-      color: var(--white);
-      min-height: 500px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 45px;
-      position: relative;
-      box-shadow: 0 24px 70px rgba(0,0,0,.18);
+    .section-title{
+      font-size:clamp(42px,5vw,76px);
+      line-height:1.02;
+      letter-spacing:-.05em;
+      max-width:880px;
     }
 
-    .hero-card::before {
-      content: "♪";
-      position: absolute;
-      right: 30px;
-      top: 16px;
-      font-size: 180px;
-      line-height: 1;
-      color: rgba(255,255,255,.06);
-    }
-
-    .hero-card .small {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      color: #bdbdbd;
-    }
-
-    .hero-card h2 {
-      margin-top: 20px;
-      font-size: 42px;
-      line-height: 1.05;
-      max-width: 360px;
-    }
-
-    .hero-card p {
-      color: #c9c9c9;
-      max-width: 360px;
-    }
-
-    .signature {
-      border-top: 1px solid #333;
-      padding-top: 24px;
-    }
-
-    .signature strong {
-      display: block;
-      font-size: 20px;
-    }
-
-    .signature span {
-      color: #aaa;
-      font-size: 14px;
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 105px 0;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 40px;
-      margin-bottom: 55px;
-    }
-
-    .section-head .eyebrow {
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: 800;
-      letter-spacing: .2em;
-      color: var(--gray);
-      margin-bottom: 10px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(36px, 5vw, 64px);
-      line-height: 1;
-      letter-spacing: -.04em;
-    }
-
-    .section-head p {
-      max-width: 470px;
-      color: #595959;
+    .section-title em{
+      font-family:"Playfair Display",Georgia,serif;
+      font-weight:600;
     }
 
     /* ABOUT */
-    .about {
-      background: #f6f6f6;
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:18px;
     }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
+    .big-card{
+      min-height:500px;
+      border-radius:var(--radius);
+      background:#fff;
+      border:1px solid #dfdfdb;
+      padding:50px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      overflow:hidden;
+      position:relative;
     }
 
-    .about-box {
-      background: var(--white);
-      padding: 42px;
-      border: 1px solid #e5e5e5;
+    .big-card.dark{background:#070707;color:#fff;border-color:#070707}
+    .big-card p{
+      max-width:590px;
+      color:#606060;
+      font-size:18px;
+      line-height:1.7;
+    }
+    .big-card.dark p{color:#aaa}
+
+    .big-card h3{
+      font-size:clamp(34px,4vw,56px);
+      line-height:1;
+      letter-spacing:-.05em;
+      max-width:520px;
     }
 
-    .about-box.dark {
-      background: var(--black);
-      color: var(--white);
-      border-color: var(--black);
+    .big-card .num{
+      font-size:12px;
+      letter-spacing:.18em;
+      color:#888;
+      text-transform:uppercase;
     }
 
-    .about-box h3 {
-      font-size: 28px;
-      margin-bottom: 16px;
+    .ring{
+      position:absolute;
+      right:-80px;bottom:-100px;
+      width:330px;height:330px;border-radius:50%;
+      border:1px solid #2a2a2a;
+    }
+    .ring::after{
+      content:"";
+      position:absolute;inset:45px;border:1px solid #242424;border-radius:50%;
     }
 
-    .about-box p {
-      color: #606060;
+    /* VALUES */
+    .values{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-top:18px;
     }
 
-    .about-box.dark p {
-      color: #c9c9c9;
+    .value{
+      min-height:300px;
+      border-radius:22px;
+      border:1px solid #dededa;
+      background:#fff;
+      padding:32px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:.35s cubic-bezier(.2,.7,.2,1);
     }
 
-    /* OFFER */
-    .offer-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .value:hover{
+      transform:translateY(-7px);
+      background:#080808;color:#fff;border-color:#080808;
     }
 
-    .offer-card {
-      border: 1px solid #dfdfdf;
-      min-height: 280px;
-      padding: 34px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: .25s ease;
-      background: var(--white);
+    .value .icon{
+      width:44px;height:44px;
+      display:grid;place-items:center;
+      border:1px solid #ddd;border-radius:50%;
+      font-size:18px;
+    }
+    .value:hover .icon{border-color:#333}
+    .value h4{font-size:26px;letter-spacing:-.035em;margin-bottom:9px}
+    .value p{color:#777;line-height:1.65;font-size:15px}
+    .value:hover p{color:#aaa}
+
+    /* BLACK FEATURE */
+    .feature{
+      background:#050505;
+      color:#fff;
+      padding:130px 0;
+      position:relative;
+      overflow:hidden;
     }
 
-    .offer-card:hover {
-      background: var(--black);
-      color: var(--white);
-      transform: translateY(-6px);
-      border-color: var(--black);
+    .feature::before{
+      content:"MUSICA";
+      position:absolute;
+      right:-40px;
+      top:-90px;
+      color:#0d0d0d;
+      font-size:240px;
+      font-weight:700;
+      letter-spacing:-.08em;
+      pointer-events:none;
     }
 
-    .offer-number {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .15em;
-      color: #888;
+    .feature-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:center;
     }
 
-    .offer-card h3 {
-      font-size: 28px;
-      margin-bottom: 12px;
+    .quote-mark{
+      font-family:Georgia,serif;
+      font-size:100px;
+      height:55px;
+      color:#333;
     }
 
-    .offer-card p {
-      color: #666;
+    .feature blockquote{
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:clamp(40px,4.6vw,70px);
+      line-height:1.07;
+      letter-spacing:-.035em;
     }
 
-    .offer-card:hover p,
-    .offer-card:hover .offer-number {
-      color: #c8c8c8;
+    .feature-side{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
     }
 
-    /* QUOTE */
-    .quote {
-      background: var(--black);
-      color: var(--white);
-      text-align: center;
-      padding: 95px 0;
+    .feature-line{
+      border-top:1px solid #262626;
+      padding:22px 0;
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:18px;
     }
 
-    .quote p {
-      font-size: clamp(30px, 4.5vw, 58px);
-      max-width: 960px;
-      margin: 0 auto;
-      line-height: 1.1;
-      letter-spacing: -.035em;
-    }
-
-    .quote span {
-      display: block;
-      margin-top: 24px;
-      color: #aaa;
-      font-size: 13px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
+    .feature-line b{font-size:13px;color:#666}
+    .feature-line strong{font-size:20px}
+    .feature-line p{color:#888;margin-top:5px;font-size:14px;line-height:1.6}
 
     /* CONTACT */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+    .contact-shell{
+      background:#fff;
+      border:1px solid #dfdfdb;
+      border-radius:30px;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
     }
 
-    .contact-main {
-      background: var(--black);
-      color: var(--white);
-      padding: 50px;
+    .contact-left{
+      padding:55px;
     }
 
-    .contact-main h3 {
-      font-size: 38px;
-      margin-bottom: 28px;
+    .contact-left h3{
+      font-size:clamp(40px,4.2vw,64px);
+      line-height:1;
+      letter-spacing:-.05em;
+      margin-bottom:32px;
     }
 
-    .contact-item {
-      padding: 20px 0;
-      border-top: 1px solid #303030;
+    .contact-row{
+      padding:21px 0;
+      border-top:1px solid #e5e5e2;
+      display:grid;
+      grid-template-columns:130px 1fr;
+      gap:20px;
+      align-items:center;
+    }
+    .contact-row:last-of-type{border-bottom:1px solid #e5e5e2}
+    .contact-row span{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      color:#888;
+      font-weight:700;
+    }
+    .contact-row a,.contact-row strong{
+      font-size:18px;
+      font-weight:600;
+      transition:.2s;
+    }
+    .contact-row a:hover{opacity:.55}
+
+    .contact-actions{
+      margin-top:28px;
+      display:flex;gap:10px;flex-wrap:wrap;
     }
 
-    .contact-item:last-child {
-      border-bottom: 1px solid #303030;
+    .btn-black{
+      background:#050505;color:#fff;
+    }
+    .btn-black:hover{transform:translateY(-3px);background:#252525}
+    .btn-outline{
+      border-color:#d3d3cf;background:#fff;color:#050505;
+    }
+    .btn-outline:hover{background:#f0f0ed;transform:translateY(-3px)}
+
+    .contact-art{
+      min-height:570px;
+      position:relative;
+      background:#080808;
+      overflow:hidden;
     }
 
-    .contact-label {
-      display: block;
-      color: #929292;
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      margin-bottom: 5px;
+    .contact-art .mini-keys{
+      position:absolute;
+      width:130%;
+      left:-10%;
+      top:14%;
+      height:72%;
+      display:grid;
+      grid-template-columns:repeat(9,1fr);
+      gap:5px;
+      transform:rotate(-8deg);
     }
 
-    .contact-value {
-      font-size: 20px;
-      font-weight: 700;
+    .mini-key{
+      position:relative;
+      background:#f4f4f0;
+      border-radius:0 0 12px 12px;
     }
 
-    .contact-side {
-      border: 1px solid #e2e2e2;
-      padding: 50px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 420px;
+    .mini-key:nth-child(1)::after,.mini-key:nth-child(2)::after,
+    .mini-key:nth-child(4)::after,.mini-key:nth-child(5)::after,
+    .mini-key:nth-child(7)::after,.mini-key:nth-child(8)::after{
+      content:"";
+      position:absolute;
+      top:0;right:-34%;
+      width:60%;height:58%;
+      background:#111;border-radius:0 0 8px 8px;
+      z-index:2;
     }
 
-    .contact-side h3 {
-      font-size: 34px;
-      line-height: 1.1;
-      margin-bottom: 18px;
-    }
-
-    .contact-side p {
-      color: #5f5f5f;
-      max-width: 430px;
+    .contact-art .art-label{
+      position:absolute;
+      left:28px;bottom:28px;
+      z-index:4;
+      color:#fff;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      background:rgba(0,0,0,.72);
+      padding:12px 16px;
+      border:1px solid #303030;
+      border-radius:999px;
     }
 
     /* FOOTER */
-    footer {
-      border-top: 1px solid #e5e5e5;
-      padding: 32px 0;
-      font-size: 13px;
-      color: #6e6e6e;
+    footer{padding:30px 0 44px}
+    .footer{
+      border-top:1px solid #d8d8d4;
+      padding-top:24px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      font-size:12px;
+      color:#777;
     }
 
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 25px;
-      flex-wrap: wrap;
+    /* reveal */
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .8s ease,transform .8s ease;
     }
+    .reveal.show{opacity:1;transform:none}
 
-    /* MOBILE */
-    @media (max-width: 900px) {
-      .nav {
-        min-height: 76px;
+    /* mobile */
+    @media(max-width:980px){
+      .navlinks,.nav-cta{display:none}
+      .hamb{display:grid;place-items:center}
+      .brand img{width:170px}
+      .hero-panel{grid-template-columns:1fr}
+      .hero-side{min-height:390px;padding:28px}
+      .piano{width:72vw;height:48%;top:auto;bottom:8%;right:-8vw}
+      .hero-copy{padding:60px 34px 10px}
+      .hero-card{position:relative;z-index:4;max-width:440px}
+      .section-top,.about-grid,.feature-grid,.contact-shell{grid-template-columns:1fr}
+      .values{grid-template-columns:1fr}
+      .feature-grid{gap:45px}
+      .contact-art{min-height:440px}
+      .section-top{gap:20px}
+      section.content,.feature{padding:95px 0}
+
+      .mobile-menu{
+        position:fixed;
+        inset:0;
+        z-index:90;
+        background:#050505;
+        color:#fff;
+        padding:120px 28px 35px;
+        display:flex;
+        flex-direction:column;
+        transform:translateY(-105%);
+        transition:.4s cubic-bezier(.2,.7,.2,1);
       }
-
-      .nav-logo img {
-        width: 190px;
+      .mobile-menu.open{transform:translateY(0)}
+      .mobile-menu a{
+        font-size:42px;
+        line-height:1;
+        letter-spacing:-.04em;
+        padding:18px 0;
+        border-bottom:1px solid #222;
       }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 76px;
-        left: 0;
-        width: 100%;
-        background: white;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 24px 5%;
-        border-top: 1px solid #eee;
-        border-bottom: 1px solid #eee;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .hero {
-        padding-top: 76px;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-        padding: 70px 0;
-      }
-
-      .hero-card {
-        min-height: 390px;
-      }
-
-      .section-head {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .about-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .offer-grid {
-        grid-template-columns: 1fr;
+      .mobile-menu .mobile-contact{
+        margin-top:auto;
+        color:#888;
+        font-size:14px;
+        line-height:1.7;
       }
     }
 
-    @media (max-width: 560px) {
-      section {
-        padding: 75px 0;
-      }
-
-      .hero h1 {
-        font-size: 52px;
-      }
-
-      .hero-text {
-        font-size: 16px;
-      }
-
-      .hero-card,
-      .about-box,
-      .contact-main,
-      .contact-side {
-        padding: 28px;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
+    @media(max-width:620px){
+      .wrap{width:min(calc(100% - 24px),var(--max))}
+      .nav-shell{top:10px;width:calc(100% - 20px)}
+      nav{height:66px;padding-left:14px;border-radius:18px}
+      .brand img{width:145px}
+      .hamb{width:42px;height:42px;border-radius:12px}
+      .hero{padding-top:88px}
+      .hero-panel{border-radius:25px;min-height:calc(100svh - 100px)}
+      .hero-copy{padding:48px 24px 10px}
+      h1{font-size:clamp(50px,16vw,76px)}
+      .hero-desc{font-size:15px}
+      .hero-actions{flex-direction:column}
+      .hero-actions .btn{width:100%}
+      .hero-side{min-height:320px;padding:20px}
+      .hero-card{padding:20px;border-radius:20px}
+      .scroll-note{display:none}
+      section.content,.feature{padding:76px 0}
+      .section-title{font-size:44px}
+      .big-card{min-height:400px;padding:30px;border-radius:22px}
+      .value{min-height:250px}
+      .feature::before{font-size:110px;top:-35px}
+      .contact-left{padding:30px 22px}
+      .contact-row{grid-template-columns:1fr;gap:5px}
+      .contact-actions{flex-direction:column}
+      .contact-actions .btn{width:100%}
+      .contact-art{min-height:330px}
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="container nav">
-      <a href="#start" class="nav-logo" aria-label="MUSICA - strona główna">
-        <img src="logomuzyka.png" alt="MUSICA Studium Muzyczne" />
+  <div class="nav-shell">
+    <nav>
+      <a class="brand" href="#start">
+        <img src="logomuzyka.png" alt="MUSICA Studium Muzyczne">
       </a>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu">☰</button>
-
-      <ul class="nav-links" id="navLinks">
+      <ul class="navlinks">
         <li><a href="#start">Start</a></li>
         <li><a href="#onas">O nas</a></li>
-        <li><a href="#oferta">Oferta</a></li>
+        <li><a href="#dlaczego">Dlaczego MUSICA</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
+
+      <a class="nav-cta" href="tel:+48662715281">
+        <span class="dot"></span>
+        Umów zajęcia
+      </a>
+
+      <button class="hamb" id="hamb" aria-label="Menu">☰</button>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#start">Start</a>
+    <a href="#onas">O nas</a>
+    <a href="#dlaczego">Dlaczego MUSICA</a>
+    <a href="#kontakt">Kontakt</a>
+
+    <div class="mobile-contact">
+      mgr Urszula Staniek — muzykolog<br>
+      662 715 281<br>
+      ustaniek@gmail.com
     </div>
-  </header>
+  </div>
 
   <main>
 
     <section class="hero" id="start">
-      <div class="container hero-grid">
+      <div class="wrap">
+        <div class="hero-panel">
 
-        <div>
-          <span class="hero-kicker">Studium Muzyczne • Ełk</span>
+          <div class="grain"></div>
 
-          <h1>
-            Muzyka zaczyna się
-            <span>od pierwszego dźwięku.</span>
-          </h1>
+          <div class="hero-copy">
+            <div class="badge"><i></i> Studium Muzyczne • Ełk</div>
 
-          <p class="hero-text">
-            MUSICA to miejsce stworzone dla osób, które chcą rozwijać swoją
-            muzyczną pasję, wrażliwość i umiejętności w przyjaznej,
-            indywidualnej atmosferze.
-          </p>
+            <h1>
+              Poczuj muzykę.
+              <span class="soft serif">Zagraj ją po swojemu.</span>
+            </h1>
 
-          <div class="hero-actions">
-            <a href="#oferta" class="btn btn-dark">Poznaj ofertę</a>
-            <a href="#kontakt" class="btn btn-light">Skontaktuj się</a>
+            <p class="hero-desc">
+              MUSICA to kameralne studium muzyczne w Ełku, w którym nauka
+              łączy się z pasją, spokojem i indywidualnym podejściem do ucznia.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-white" href="#kontakt">
+                Umów zajęcia <span class="arrow">↗</span>
+              </a>
+              <a class="btn btn-ghost" href="#onas">Poznaj MUSICA</a>
+            </div>
           </div>
+
+          <div class="hero-side">
+            <div class="hero-card">
+              <small>Prowadząca</small>
+              <strong>mgr Urszula Staniek</strong>
+              <span>muzykolog</span>
+            </div>
+          </div>
+
+          <div class="piano" aria-hidden="true">
+            <div class="piano-top"></div>
+            <div class="keys">
+              <div class="key"></div><div class="key"></div><div class="key"></div>
+              <div class="key"></div><div class="key"></div><div class="key"></div>
+              <div class="key"></div><div class="key"></div><div class="key"></div>
+              <div class="key"></div>
+            </div>
+          </div>
+
+          <div class="scroll-note"><span class="scroll-line"></span> przewiń niżej</div>
         </div>
-
-        <div class="hero-card">
-          <div>
-            <span class="small">MUSICA • Studium Muzyczne</span>
-            <h2>Rozwijamy pasję do muzyki.</h2>
-          </div>
-
-          <p>
-            Indywidualne podejście, spokojna atmosfera i nauka dopasowana
-            do możliwości oraz potrzeb ucznia.
-          </p>
-
-          <div class="signature">
-            <strong>mgr Urszula Staniek</strong>
-            <span>muzykolog</span>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <section class="about" id="onas">
-      <div class="container">
+    <div class="marquee">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          <span>MUSICA Studium Muzyczne</span><b>•</b>
+          <span>Ełk</span><b>•</b>
+          <span>Pasja</span><b>•</b>
+          <span>Rozwój</span><b>•</b>
+          <span>Muzyka</span><b>•</b>
+        </div>
+        <div class="marquee-item">
+          <span>MUSICA Studium Muzyczne</span><b>•</b>
+          <span>Ełk</span><b>•</b>
+          <span>Pasja</span><b>•</b>
+          <span>Rozwój</span><b>•</b>
+          <span>Muzyka</span><b>•</b>
+        </div>
+      </div>
+    </div>
 
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">O nas</div>
-            <h2>Miejsce, w którym<br>muzyka ma znaczenie.</h2>
-          </div>
-
-          <p>
-            W MUSICA najważniejszy jest uczeń, jego rozwój i przyjemność
-            płynąca z obcowania z muzyką.
-          </p>
+    <section class="content" id="onas">
+      <div class="wrap">
+        <div class="section-top reveal">
+          <div class="eyebrow">01 — O nas</div>
+          <h2 class="section-title">
+            Tu nie chodzi tylko o nuty.
+            Chodzi o <em>radość z muzyki.</em>
+          </h2>
         </div>
 
         <div class="about-grid">
-          <article class="about-box">
-            <h3>Indywidualne podejście</h3>
-            <p>
-              Tempo i sposób prowadzenia zajęć są dopasowane do wieku,
-              doświadczenia oraz celów każdej osoby.
-            </p>
+          <article class="big-card reveal">
+            <span class="num">MUSICA / EŁK</span>
+            <div>
+              <h3>Indywidualne podejście do każdego ucznia.</h3>
+              <p style="margin-top:24px">
+                Każda osoba rozwija się w innym tempie. Dlatego zajęcia
+                w MUSICA są prowadzone tak, aby budować pewność siebie,
+                muzykalność i prawdziwą przyjemność z nauki.
+              </p>
+            </div>
           </article>
 
-          <article class="about-box dark">
-            <h3>Doświadczenie i pasja</h3>
-            <p>
-              Zajęcia prowadzone są z zaangażowaniem i dbałością o rozwój
-              muzykalności, słuchu oraz pewności siebie.
-            </p>
+          <article class="big-card dark reveal">
+            <span class="num">PROWADZĄCA</span>
+            <div>
+              <h3 class="serif">mgr Urszula Staniek</h3>
+              <p style="margin-top:24px">
+                Muzykolog prowadząca MUSICA Studium Muzyczne w Ełku.
+                Miejsce stworzone z myślą o rozwijaniu muzycznej pasji
+                w spokojnej i przyjaznej atmosferze.
+              </p>
+            </div>
+            <div class="ring"></div>
           </article>
         </div>
-
       </div>
     </section>
 
-    <section id="oferta">
-      <div class="container">
-
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Oferta</div>
-            <h2>Muzyka dopasowana<br>do Ciebie.</h2>
-          </div>
-
-          <p>
-            Zajęcia prowadzone są w sposób indywidualny, dzięki czemu każdy
-            uczeń może rozwijać się we własnym tempie.
-          </p>
+    <section class="content" id="dlaczego" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-top reveal">
+          <div class="eyebrow">02 — Dlaczego MUSICA</div>
+          <h2 class="section-title">
+            Nauka, która zostaje
+            <em>na dłużej.</em>
+          </h2>
         </div>
 
-        <div class="offer-grid">
-
-          <article class="offer-card">
-            <span class="offer-number">01</span>
+        <div class="values">
+          <article class="value reveal">
+            <div class="icon">♪</div>
             <div>
-              <h3>Indywidualne zajęcia</h3>
-              <p>
-                Nauka w spokojnej atmosferze i pełne skupienie na potrzebach ucznia.
-              </p>
+              <h4>Indywidualnie</h4>
+              <p>Tempo pracy i sposób prowadzenia zajęć dopasowany do konkretnej osoby.</p>
             </div>
           </article>
 
-          <article class="offer-card">
-            <span class="offer-number">02</span>
+          <article class="value reveal">
+            <div class="icon">◌</div>
             <div>
-              <h3>Rozwój muzyczny</h3>
-              <p>
-                Kształcenie słuchu, rytmu, muzykalności i swobody w pracy z muzyką.
-              </p>
+              <h4>Bez presji</h4>
+              <p>Spokojna atmosfera, która pomaga skupić się na rozwoju i własnych możliwościach.</p>
             </div>
           </article>
 
-          <article class="offer-card">
-            <span class="offer-number">03</span>
+          <article class="value reveal">
+            <div class="icon">↗</div>
             <div>
-              <h3>Przygotowanie do występów</h3>
-              <p>
-                Pomoc w budowaniu pewności siebie i przygotowaniu repertuaru.
-              </p>
+              <h4>Z pasją</h4>
+              <p>Muzyka jako coś więcej niż ćwiczenie — jako sposób wyrażania siebie i budowania pewności.</p>
             </div>
           </article>
-
         </div>
-
       </div>
     </section>
 
-    <section class="quote">
-      <div class="container">
-        <p>„Muzyka jest językiem, który rozumie się bez słów.”</p>
-        <span>MUSICA Studium Muzyczne</span>
+    <section class="feature">
+      <div class="wrap feature-grid">
+        <div class="reveal">
+          <div class="quote-mark">“</div>
+          <blockquote>
+            Muzyka zaczyna się tam, gdzie kończą się słowa.
+          </blockquote>
+        </div>
+
+        <div class="feature-side reveal">
+          <div class="feature-line">
+            <b>01</b>
+            <div>
+              <strong>Kameralna atmosfera</strong>
+              <p>Przestrzeń sprzyjająca skupieniu, swobodzie i spokojnej pracy.</p>
+            </div>
+          </div>
+
+          <div class="feature-line">
+            <b>02</b>
+            <div>
+              <strong>Rozwój muzykalności</strong>
+              <p>Praca nad słuchem, rytmem, interpretacją i świadomym kontaktem z muzyką.</p>
+            </div>
+          </div>
+
+          <div class="feature-line">
+            <b>03</b>
+            <div>
+              <strong>Kontakt bez komplikacji</strong>
+              <p>Po prostu zadzwoń lub napisz i zapytaj o dostępne terminy.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="kontakt">
-      <div class="container">
-
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Kontakt</div>
-            <h2>Zacznij swoją<br>muzyczną drogę.</h2>
-          </div>
-
-          <p>
-            Masz pytania dotyczące zajęć? Skontaktuj się telefonicznie
-            lub mailowo.
-          </p>
+    <section class="content" id="kontakt">
+      <div class="wrap">
+        <div class="section-top reveal">
+          <div class="eyebrow">03 — Kontakt</div>
+          <h2 class="section-title">
+            Zacznij swoją
+            <em>muzyczną drogę.</em>
+          </h2>
         </div>
 
-        <div class="contact-grid">
+        <div class="contact-shell reveal">
+          <div class="contact-left">
+            <h3>MUSICA<br><span class="serif">Studium Muzyczne</span></h3>
 
-          <div class="contact-main">
-            <h3>MUSICA<br>Studium Muzyczne</h3>
-
-            <div class="contact-item">
-              <span class="contact-label">Prowadząca</span>
-              <span class="contact-value">mgr Urszula Staniek</span>
+            <div class="contact-row">
+              <span>Prowadząca</span>
+              <strong>mgr Urszula Staniek</strong>
             </div>
 
-            <div class="contact-item">
-              <span class="contact-label">Telefon</span>
-              <a class="contact-value" href="tel:+48662715281">662 715 281</a>
+            <div class="contact-row">
+              <span>Telefon</span>
+              <a href="tel:+48662715281">662 715 281</a>
             </div>
 
-            <div class="contact-item">
-              <span class="contact-label">E-mail</span>
-              <a class="contact-value" href="mailto:ustaniek@gmail.com">ustaniek@gmail.com</a>
+            <div class="contact-row">
+              <span>E-mail</span>
+              <a href="mailto:ustaniek@gmail.com">ustaniek@gmail.com</a>
             </div>
 
-            <div class="contact-item">
-              <span class="contact-label">Miasto</span>
-              <span class="contact-value">Ełk</span>
+            <div class="contact-row">
+              <span>Miasto</span>
+              <strong>Ełk</strong>
+            </div>
+
+            <div class="contact-actions">
+              <a class="btn btn-black" href="tel:+48662715281">Zadzwoń teraz ↗</a>
+              <a class="btn btn-outline" href="https://www.facebook.com/100063806301540/" target="_blank" rel="noopener">Facebook</a>
             </div>
           </div>
 
-          <div class="contact-side">
-            <div>
-              <h3>Masz ochotę zacząć?</h3>
-              <p>
-                Napisz lub zadzwoń i zapytaj o dostępne terminy zajęć.
-              </p>
+          <div class="contact-art" aria-hidden="true">
+            <div class="mini-keys">
+              <div class="mini-key"></div><div class="mini-key"></div><div class="mini-key"></div>
+              <div class="mini-key"></div><div class="mini-key"></div><div class="mini-key"></div>
+              <div class="mini-key"></div><div class="mini-key"></div><div class="mini-key"></div>
             </div>
-
-            <a href="tel:+48662715281" class="btn btn-dark">Zadzwoń teraz</a>
+            <div class="art-label">MUSICA • EŁK</div>
           </div>
-
         </div>
-
       </div>
     </section>
 
   </main>
 
   <footer>
-    <div class="container footer-row">
-      <span>© 2026 MUSICA Studium Muzyczne. Wszelkie prawa zastrzeżone.</span>
-      <span>Ełk • mgr Urszula Staniek</span>
+    <div class="wrap footer">
+      <span>© 2026 MUSICA Studium Muzyczne</span>
+      <span>mgr Urszula Staniek • Ełk</span>
     </div>
   </footer>
 
   <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+    const hamb = document.getElementById("hamb");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-    menuBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-      menuBtn.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
+    hamb.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+      document.body.classList.toggle("menu-open");
+      hamb.textContent = mobileMenu.classList.contains("open") ? "×" : "☰";
     });
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuBtn.textContent = "☰";
+    document.querySelectorAll(".mobile-menu a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        hamb.textContent = "☰";
       });
     });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12});
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   </script>
 
 </body>
