@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MUSICA Studium Muzyczne w Ełku – indywidualne zajęcia muzyczne prowadzone przez mgr Urszulę Staniek." />
+  <title>MUSICA Studium Muzyczne | Ełk</title>
+
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #141414;
+      --gray: #6d6d6d;
+      --light-gray: #ededed;
+      --white: #ffffff;
+      --max-width: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* NAV */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e7e7e7;
+      z-index: 1000;
+    }
+
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .nav-logo img {
+      width: 230px;
+      height: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--black);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding-top: 88px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,.96) 49%, rgba(245,245,245,.96) 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -100px;
+      bottom: -120px;
+      width: 640px;
+      height: 640px;
+      border: 1px solid #d7d7d7;
+      border-radius: 50%;
+      opacity: .7;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 70px;
+      padding: 90px 0;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: .98;
+      letter-spacing: -0.055em;
+      max-width: 780px;
+    }
+
+    .hero h1 span {
+      display: block;
+      font-weight: 300;
+      color: #4c4c4c;
+    }
+
+    .hero-text {
+      margin-top: 28px;
+      max-width: 650px;
+      font-size: 18px;
+      color: #4e4e4e;
+    }
+
+    .hero-actions {
+      margin-top: 38px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 26px;
+      border: 1px solid var(--black);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 13px;
+      transition: .25s ease;
+    }
+
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-dark:hover {
+      background: #292929;
+      transform: translateY(-2px);
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .btn-light:hover {
+      background: var(--black);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: var(--black);
+      color: var(--white);
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 45px;
+      position: relative;
+      box-shadow: 0 24px 70px rgba(0,0,0,.18);
+    }
+
+    .hero-card::before {
+      content: "♪";
+      position: absolute;
+      right: 30px;
+      top: 16px;
+      font-size: 180px;
+      line-height: 1;
+      color: rgba(255,255,255,.06);
+    }
+
+    .hero-card .small {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: #bdbdbd;
+    }
+
+    .hero-card h2 {
+      margin-top: 20px;
+      font-size: 42px;
+      line-height: 1.05;
+      max-width: 360px;
+    }
+
+    .hero-card p {
+      color: #c9c9c9;
+      max-width: 360px;
+    }
+
+    .signature {
+      border-top: 1px solid #333;
+      padding-top: 24px;
+    }
+
+    .signature strong {
+      display: block;
+      font-size: 20px;
+    }
+
+    .signature span {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 105px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 55px;
+    }
+
+    .section-head .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: .2em;
+      color: var(--gray);
+      margin-bottom: 10px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    .section-head p {
+      max-width: 470px;
+      color: #595959;
+    }
+
+    /* ABOUT */
+    .about {
+      background: #f6f6f6;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .about-box {
+      background: var(--white);
+      padding: 42px;
+      border: 1px solid #e5e5e5;
+    }
+
+    .about-box.dark {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+
+    .about-box h3 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .about-box p {
+      color: #606060;
+    }
+
+    .about-box.dark p {
+      color: #c9c9c9;
+    }
+
+    /* OFFER */
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .offer-card {
+      border: 1px solid #dfdfdf;
+      min-height: 280px;
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: .25s ease;
+      background: var(--white);
+    }
+
+    .offer-card:hover {
+      background: var(--black);
+      color: var(--white);
+      transform: translateY(-6px);
+      border-color: var(--black);
+    }
+
+    .offer-number {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      color: #888;
+    }
+
+    .offer-card h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .offer-card p {
+      color: #666;
+    }
+
+    .offer-card:hover p,
+    .offer-card:hover .offer-number {
+      color: #c8c8c8;
+    }
+
+    /* QUOTE */
+    .quote {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 95px 0;
+    }
+
+    .quote p {
+      font-size: clamp(30px, 4.5vw, 58px);
+      max-width: 960px;
+      margin: 0 auto;
+      line-height: 1.1;
+      letter-spacing: -.035em;
+    }
+
+    .quote span {
+      display: block;
+      margin-top: 24px;
+      color: #aaa;
+      font-size: 13px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .contact-main {
+      background: var(--black);
+      color: var(--white);
+      padding: 50px;
+    }
+
+    .contact-main h3 {
+      font-size: 38px;
+      margin-bottom: 28px;
+    }
+
+    .contact-item {
+      padding: 20px 0;
+      border-top: 1px solid #303030;
+    }
+
+    .contact-item:last-child {
+      border-bottom: 1px solid #303030;
+    }
+
+    .contact-label {
+      display: block;
+      color: #929292;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .contact-value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .contact-side {
+      border: 1px solid #e2e2e2;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 420px;
+    }
+
+    .contact-side h3 {
+      font-size: 34px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .contact-side p {
+      color: #5f5f5f;
+      max-width: 430px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #e5e5e5;
+      padding: 32px 0;
+      font-size: 13px;
+      color: #6e6e6e;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .nav {
+        min-height: 76px;
+      }
+
+      .nav-logo img {
+        width: 190px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 5%;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        padding-top: 76px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 70px 0;
+      }
+
+      .hero-card {
+        min-height: 390px;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .offer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      section {
+        padding: 75px 0;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+
+      .hero-card,
+      .about-box,
+      .contact-main,
+      .contact-side {
+        padding: 28px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#start" class="nav-logo" aria-label="MUSICA - strona główna">
+        <img src="logomuzyka.png" alt="MUSICA Studium Muzyczne" />
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Otwórz menu">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#start">Start</a></li>
+        <li><a href="#onas">O nas</a></li>
+        <li><a href="#oferta">Oferta</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="start">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="hero-kicker">Studium Muzyczne • Ełk</span>
+
+          <h1>
+            Muzyka zaczyna się
+            <span>od pierwszego dźwięku.</span>
+          </h1>
+
+          <p class="hero-text">
+            MUSICA to miejsce stworzone dla osób, które chcą rozwijać swoją
+            muzyczną pasję, wrażliwość i umiejętności w przyjaznej,
+            indywidualnej atmosferze.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#oferta" class="btn btn-dark">Poznaj ofertę</a>
+            <a href="#kontakt" class="btn btn-light">Skontaktuj się</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div>
+            <span class="small">MUSICA • Studium Muzyczne</span>
+            <h2>Rozwijamy pasję do muzyki.</h2>
+          </div>
+
+          <p>
+            Indywidualne podejście, spokojna atmosfera i nauka dopasowana
+            do możliwości oraz potrzeb ucznia.
+          </p>
+
+          <div class="signature">
+            <strong>mgr Urszula Staniek</strong>
+            <span>muzykolog</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="about" id="onas">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">O nas</div>
+            <h2>Miejsce, w którym<br>muzyka ma znaczenie.</h2>
+          </div>
+
+          <p>
+            W MUSICA najważniejszy jest uczeń, jego rozwój i przyjemność
+            płynąca z obcowania z muzyką.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-box">
+            <h3>Indywidualne podejście</h3>
+            <p>
+              Tempo i sposób prowadzenia zajęć są dopasowane do wieku,
+              doświadczenia oraz celów każdej osoby.
+            </p>
+          </article>
+
+          <article class="about-box dark">
+            <h3>Doświadczenie i pasja</h3>
+            <p>
+              Zajęcia prowadzone są z zaangażowaniem i dbałością o rozwój
+              muzykalności, słuchu oraz pewności siebie.
+            </p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="oferta">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Oferta</div>
+            <h2>Muzyka dopasowana<br>do Ciebie.</h2>
+          </div>
+
+          <p>
+            Zajęcia prowadzone są w sposób indywidualny, dzięki czemu każdy
+            uczeń może rozwijać się we własnym tempie.
+          </p>
+        </div>
+
+        <div class="offer-grid">
+
+          <article class="offer-card">
+            <span class="offer-number">01</span>
+            <div>
+              <h3>Indywidualne zajęcia</h3>
+              <p>
+                Nauka w spokojnej atmosferze i pełne skupienie na potrzebach ucznia.
+              </p>
+            </div>
+          </article>
+
+          <article class="offer-card">
+            <span class="offer-number">02</span>
+            <div>
+              <h3>Rozwój muzyczny</h3>
+              <p>
+                Kształcenie słuchu, rytmu, muzykalności i swobody w pracy z muzyką.
+              </p>
+            </div>
+          </article>
+
+          <article class="offer-card">
+            <span class="offer-number">03</span>
+            <div>
+              <h3>Przygotowanie do występów</h3>
+              <p>
+                Pomoc w budowaniu pewności siebie i przygotowaniu repertuaru.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="quote">
+      <div class="container">
+        <p>„Muzyka jest językiem, który rozumie się bez słów.”</p>
+        <span>MUSICA Studium Muzyczne</span>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Kontakt</div>
+            <h2>Zacznij swoją<br>muzyczną drogę.</h2>
+          </div>
+
+          <p>
+            Masz pytania dotyczące zajęć? Skontaktuj się telefonicznie
+            lub mailowo.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="contact-main">
+            <h3>MUSICA<br>Studium Muzyczne</h3>
+
+            <div class="contact-item">
+              <span class="contact-label">Prowadząca</span>
+              <span class="contact-value">mgr Urszula Staniek</span>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-label">Telefon</span>
+              <a class="contact-value" href="tel:+48662715281">662 715 281</a>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-label">E-mail</span>
+              <a class="contact-value" href="mailto:ustaniek@gmail.com">ustaniek@gmail.com</a>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-label">Miasto</span>
+              <span class="contact-value">Ełk</span>
+            </div>
+          </div>
+
+          <div class="contact-side">
+            <div>
+              <h3>Masz ochotę zacząć?</h3>
+              <p>
+                Napisz lub zadzwoń i zapytaj o dostępne terminy zajęć.
+              </p>
+            </div>
+
+            <a href="tel:+48662715281" class="btn btn-dark">Zadzwoń teraz</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© 2026 MUSICA Studium Muzyczne. Wszelkie prawa zastrzeżone.</span>
+      <span>Ełk • mgr Urszula Staniek</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      menuBtn.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.textContent = "☰";
+      });
+    });
+  </script>
+
+</body>
+</html>
