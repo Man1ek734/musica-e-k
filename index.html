@@ -376,7 +376,8 @@
     .marquee-track{
       display:flex;
       width:max-content;
-      animation:move 25s linear infinite;
+      animation:move 26s linear infinite;
+      will-change:transform;
     }
 
     .marquee-item{
@@ -390,7 +391,10 @@
     }
 
     .marquee-item b{font-size:20px;color:#111}
-    @keyframes move{to{transform:translateX(-50%)}}
+    @keyframes move{
+      from{transform:translateX(100vw)}
+      to{transform:translateX(-100%)}
+    }
 
     /* SECTION GENERAL */
     section.content{
