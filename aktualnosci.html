@@ -1,27 +1,21 @@
 <!doctype html>
 <html lang="pl">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#050505">
-  <meta name="description" content="Aktualności MUSICA Studium Muzyczne w Ełku. Najnowsze wydarzenia, koncerty, nagrania i informacje.">
 
   <title>Aktualności | MUSICA Studium Muzyczne</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
-    :root {
-      --black: #050505;
-      --paper: #f4f4f1;
-      --white: #ffffff;
-      --muted: #767676;
-      --line: #deded9;
-      --max: 1240px;
-    }
 
     * {
       margin: 0;
@@ -35,9 +29,8 @@
 
     body {
       font-family: "DM Sans", Arial, sans-serif;
-      color: var(--black);
-      background: var(--paper);
-      overflow-x: hidden;
+      background: #f5f5f2;
+      color: #050505;
     }
 
     a {
@@ -45,13 +38,8 @@
       color: inherit;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
     .wrap {
-      width: min(calc(100% - 40px), var(--max));
+      width: min(calc(100% - 40px), 1240px);
       margin: auto;
     }
 
@@ -67,24 +55,22 @@
     }
 
     nav {
-      min-height: 76px;
+      height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
 
       padding: 0 16px 0 22px;
 
       background: rgba(255,255,255,.90);
 
+      backdrop-filter: blur(18px);
+
       border: 1px solid rgba(0,0,0,.08);
 
-      box-shadow: 0 18px 55px rgba(0,0,0,.08);
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
       border-radius: 22px;
+
+      box-shadow: 0 18px 55px rgba(0,0,0,.08);
     }
 
     .brand img {
@@ -95,15 +81,16 @@
 
     .navlinks {
       display: flex;
-      gap: 8px;
       align-items: center;
+      gap: 8px;
       list-style: none;
     }
 
     .navlinks a {
       display: flex;
-      height: 42px;
       align-items: center;
+
+      height: 42px;
 
       padding: 0 15px;
 
@@ -119,81 +106,40 @@
       background: #ededeb;
     }
 
-    .navlinks a.active {
+    .navlinks .active {
       background: #050505;
       color: white;
     }
 
     .nav-cta {
-      height: 46px;
+      background: #050505;
+      color: white;
 
-      padding: 0 18px;
-
-      display: flex;
-      align-items: center;
+      padding: 14px 20px;
 
       border-radius: 14px;
-
-      color: white;
-      background: #050505;
 
       font-size: 13px;
       font-weight: 700;
-
-      transition: .25s;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-2px);
-      background: #242424;
-    }
-
-    .hamb {
-      display: none;
-
-      width: 46px;
-      height: 46px;
-
-      border: 0;
-      border-radius: 14px;
-
-      background: #050505;
-      color: white;
-
-      font-size: 21px;
-
-      cursor: pointer;
-    }
-
-    .mobile-menu {
-      display: none;
     }
 
     /* HERO */
 
     .hero {
-      padding: 124px 0 28px;
+      padding: 150px 0 80px;
     }
 
     .hero-box {
-      position: relative;
-
-      overflow: hidden;
-
-      min-height: 520px;
-
-      padding: clamp(44px, 7vw, 90px);
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
       background: #050505;
       color: white;
 
-      border-radius: 34px;
+      border-radius: 32px;
 
-      box-shadow: 0 35px 90px rgba(0,0,0,.15);
+      padding: 80px 60px;
+
+      position: relative;
+
+      overflow: hidden;
     }
 
     .hero-box::after {
@@ -201,48 +147,47 @@
 
       position: absolute;
 
-      width: 520px;
-      height: 520px;
+      width: 450px;
+      height: 450px;
 
-      right: -130px;
-      top: -180px;
-
-      border: 1px solid #242424;
+      right: -120px;
+      top: -160px;
 
       border-radius: 50%;
 
+      border: 1px solid #222;
+
       box-shadow:
-        0 0 0 70px rgba(255,255,255,.015),
-        0 0 0 140px rgba(255,255,255,.012);
+        0 0 0 70px rgba(255,255,255,.02),
+        0 0 0 140px rgba(255,255,255,.01);
     }
 
-    .eyebrow {
+    .small {
       position: relative;
       z-index: 2;
 
-      margin-bottom: 25px;
-
       font-size: 11px;
-      font-weight: 700;
+
+      letter-spacing: .18em;
 
       text-transform: uppercase;
 
-      letter-spacing: .2em;
+      color: #888;
 
-      color: #8b8b8b;
+      margin-bottom: 22px;
     }
 
     h1 {
       position: relative;
       z-index: 2;
 
-      font-size: clamp(60px, 8vw, 112px);
+      font-size: clamp(55px, 7vw, 100px);
 
-      line-height: .88;
+      line-height: .95;
 
-      letter-spacing: -.065em;
+      letter-spacing: -.06em;
 
-      max-width: 950px;
+      max-width: 900px;
     }
 
     h1 span {
@@ -251,370 +196,155 @@
       font-family: "Playfair Display", serif;
 
       font-style: italic;
-      font-weight: 600;
 
       color: #777;
     }
 
-    .hero-desc {
+    .hero p {
       position: relative;
       z-index: 2;
 
-      max-width: 640px;
-
-      margin-top: 30px;
+      max-width: 650px;
 
       color: #aaa;
 
       font-size: 18px;
 
       line-height: 1.7;
+
+      margin-top: 30px;
     }
 
     /* AKTUALNOŚCI */
 
     .news {
-      padding: 100px 0 125px;
+      padding: 30px 0 120px;
     }
 
-    .news-head {
+    .title {
       display: grid;
 
       grid-template-columns: .6fr 1.4fr;
 
-      gap: 40px;
-
-      align-items: start;
-
-      margin-bottom: 58px;
+      margin-bottom: 60px;
     }
 
-    .news-head small {
-      padding-top: 12px;
-
+    .title small {
       color: #777;
-
-      font-size: 11px;
-      font-weight: 700;
 
       text-transform: uppercase;
 
-      letter-spacing: .18em;
+      letter-spacing: .15em;
+
+      font-size: 11px;
     }
 
-    .news-head h2 {
-      max-width: 900px;
+    .title h2 {
+      font-size: clamp(40px, 5vw, 70px);
 
-      font-size: clamp(42px, 5vw, 74px);
+      letter-spacing: -.05em;
 
       line-height: 1;
-
-      letter-spacing: -.052em;
     }
 
-    .news-head h2 em {
+    .title h2 span {
       font-family: "Playfair Display", serif;
-      font-weight: 600;
-    }
-
-    /* POSTY */
-
-    .posts-grid {
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 18px;
-    }
-
-    .post-card {
-      min-width: 0;
-
-      overflow: hidden;
-
-      display: flex;
-      flex-direction: column;
-
-      background: white;
-
-      border: 1px solid var(--line);
-
-      border-radius: 25px;
-
-      transition:
-        transform .35s cubic-bezier(.2,.7,.2,1),
-        box-shadow .35s ease;
-    }
-
-    .post-card:hover {
-      transform: translateY(-7px);
-
-      box-shadow: 0 25px 65px rgba(0,0,0,.10);
-    }
-
-    .post-image-wrap {
-      position: relative;
-
-      aspect-ratio: 4 / 3;
-
-      overflow: hidden;
-
-      background: #e9e9e5;
-    }
-
-    .post-image {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      transition: transform .55s ease;
-    }
-
-    .post-card:hover .post-image {
-      transform: scale(1.035);
-    }
-
-    .post-image-wrap::after {
-      content: "";
-
-      position: absolute;
-
-      inset: 0;
-
-      background:
-        linear-gradient(
-          to top,
-          rgba(0,0,0,.11),
-          transparent 35%
-        );
-
-      pointer-events: none;
-    }
-
-    .post-no-image {
-      aspect-ratio: 4 / 3;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      background: #080808;
-
-      color: white;
-
-      font-family: "Playfair Display", serif;
-
-      font-size: 58px;
 
       font-style: italic;
     }
 
-    .post-body {
-      flex: 1;
+    /* FACEBOOK */
 
-      padding: 27px 27px 25px;
-
-      display: flex;
-      flex-direction: column;
-    }
-
-    .post-meta {
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 15px;
-
-      margin-bottom: 19px;
-
-      color: #888;
-
-      font-size: 11px;
-      font-weight: 700;
-
-      text-transform: uppercase;
-
-      letter-spacing: .12em;
-    }
-
-    .fb-dot {
-      width: 8px;
-      height: 8px;
-
-      display: inline-block;
-
-      margin-right: 7px;
-
-      border-radius: 50%;
-
-      background: #111;
-    }
-
-    .post-text {
-      color: #292929;
-
-      font-size: 16px;
-
-      line-height: 1.65;
-
-      white-space: pre-line;
-
-      display: -webkit-box;
-
-      -webkit-line-clamp: 7;
-
-      -webkit-box-orient: vertical;
-
-      overflow: hidden;
-    }
-
-    .post-spacer {
-      flex: 1;
-      min-height: 25px;
-    }
-
-    .post-link {
-      margin-top: 24px;
-
-      padding-top: 19px;
-
-      border-top: 1px solid #e8e8e4;
-
-      display: flex;
-
-      justify-content: space-between;
-      align-items: center;
-
-      font-size: 13px;
-
-      font-weight: 700;
-    }
-
-    .post-link span:last-child {
-      width: 32px;
-      height: 32px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: #050505;
-
-      color: white;
-
-      transition: .25s;
-    }
-
-    .post-card:hover .post-link span:last-child {
-      transform: rotate(45deg);
-    }
-
-    /* STATUS */
-
-    .status-card {
-      grid-column: 1 / -1;
-
-      min-height: 260px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      text-align: center;
-
-      padding: 40px;
-
-      border: 1px solid #deded9;
-
+    .facebook-box {
       background: white;
 
-      border-radius: 26px;
+      border: 1px solid #ddd;
+
+      border-radius: 28px;
+
+      padding: 45px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      box-shadow: 0 20px 60px rgba(0,0,0,.06);
     }
 
-    .status-card h3 {
-      margin-bottom: 10px;
+    .facebook-title {
+      width: 100%;
 
-      font-size: 28px;
+      max-width: 700px;
 
-      letter-spacing: -.03em;
+      margin-bottom: 30px;
+
+      text-align: center;
     }
 
-    .status-card p {
+    .facebook-title h3 {
+      font-size: 30px;
+
+      margin-bottom: 8px;
+    }
+
+    .facebook-title p {
       color: #777;
 
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
-    .loader {
-      width: 38px;
-      height: 38px;
+    .facebook-frame {
+      width: 100%;
 
-      margin: 0 auto 22px;
-
-      border: 3px solid #e6e6e3;
-
-      border-top-color: #050505;
-
-      border-radius: 50%;
-
-      animation: spin .8s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .more-row {
-      margin-top: 42px;
+      max-width: 500px;
 
       display: flex;
 
       justify-content: center;
     }
 
-    .more-btn {
-      min-height: 54px;
+    iframe {
+      border: none;
 
-      display: inline-flex;
+      overflow: hidden;
 
-      align-items: center;
+      width: 500px;
 
-      gap: 12px;
+      max-width: 100%;
 
-      padding: 0 25px;
+      height: 800px;
+    }
 
-      color: white;
+    .facebook-button {
+      margin-top: 30px;
 
       background: #050505;
 
-      border-radius: 15px;
+      color: white;
 
-      font-size: 14px;
+      padding: 15px 25px;
+
+      border-radius: 14px;
+
       font-weight: 700;
 
       transition: .25s;
     }
 
-    .more-btn:hover {
+    .facebook-button:hover {
       transform: translateY(-3px);
 
-      background: #242424;
+      background: #222;
     }
 
     /* STOPKA */
 
     footer {
-      padding: 30px 0 45px;
+      border-top: 1px solid #ddd;
 
-      border-top: 1px solid #d8d8d4;
+      padding: 30px 0 45px;
 
       color: #777;
 
@@ -631,785 +361,256 @@
       flex-wrap: wrap;
     }
 
-    /* ANIMACJE */
+    /* TELEFON */
 
-    .reveal {
-      opacity: 0;
+    @media(max-width: 800px) {
 
-      transform: translateY(18px);
-
-      transition:
-        opacity .7s ease,
-        transform .7s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-
-      transform: none;
-    }
-
-    /* TABLET */
-
-    @media(max-width: 980px) {
-
-      .navlinks,
-      .nav-cta {
+      .navlinks {
         display: none;
       }
 
-      .hamb {
-        display: grid;
+      .nav-cta {
+        font-size: 11px;
 
-        place-items: center;
+        padding: 12px 14px;
       }
 
       .brand img {
-        width: 170px;
-      }
-
-      .posts-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .news-head {
-        grid-template-columns: 1fr;
-
-        gap: 18px;
-      }
-
-      .mobile-menu {
-        position: fixed;
-
-        inset: 0;
-
-        z-index: 90;
-
-        padding: 120px 28px 35px;
-
-        display: flex;
-
-        flex-direction: column;
-
-        transform: translateY(-105%);
-
-        background: #050505;
-
-        color: white;
-
-        transition: .4s cubic-bezier(.2,.7,.2,1);
-      }
-
-      .mobile-menu.open {
-        transform: translateY(0);
-      }
-
-      .mobile-menu a {
-        padding: 18px 0;
-
-        border-bottom: 1px solid #222;
-
-        font-size: 40px;
-
-        line-height: 1;
-
-        letter-spacing: -.04em;
-      }
-
-    }
-
-    /* TELEFON */
-
-    @media(max-width: 650px) {
-
-      .wrap {
-        width: calc(100% - 24px);
-      }
-
-      .nav-shell {
-        top: 10px;
-
-        width: calc(100% - 20px);
-      }
-
-      nav {
-        min-height: 66px;
-
-        border-radius: 18px;
-      }
-
-      .brand img {
-        width: 145px;
-      }
-
-      .hamb {
-        width: 42px;
-        height: 42px;
-
-        border-radius: 12px;
+        width: 150px;
       }
 
       .hero {
-        padding-top: 88px;
+        padding-top: 110px;
       }
 
       .hero-box {
-        min-height: 440px;
+        padding: 55px 25px;
 
-        padding: 40px 25px;
-
-        border-radius: 25px;
+        border-radius: 24px;
       }
 
-      h1 {
-        font-size: 55px;
-      }
-
-      .hero-desc {
-        font-size: 15px;
-      }
-
-      .news {
-        padding: 75px 0 90px;
-      }
-
-      .posts-grid {
+      .title {
         grid-template-columns: 1fr;
+
+        gap: 15px;
       }
 
-      .news-head h2 {
-        font-size: 44px;
+      .facebook-box {
+        padding: 25px 10px;
       }
 
     }
 
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- MENU -->
 
-  <div class="nav-shell">
+<div class="nav-shell">
 
-    <nav>
+<nav>
 
-      <a class="brand" href="index.html">
+  <a class="brand" href="index.html">
+    <img src="logomuzyka.png" alt="MUSICA Studium Muzyczne">
+  </a>
 
-        <img
-          src="logomuzyka.png"
-          alt="MUSICA Studium Muzyczne"
-        >
 
+  <ul class="navlinks">
+
+    <li>
+      <a href="index.html">
+        Start
       </a>
+    </li>
 
-      <ul class="navlinks">
-
-        <li>
-          <a href="index.html">
-            Start
-          </a>
-        </li>
-
-        <li>
-          <a href="index.html#onas">
-            O nas
-          </a>
-        </li>
-
-        <li>
-          <a href="index.html#dlaczego">
-            Dlaczego MUSICA
-          </a>
-        </li>
-
-        <li>
-          <a
-            class="active"
-            href="aktualnosci.html"
-          >
-            Aktualności
-          </a>
-        </li>
-
-        <li>
-          <a href="index.html#kontakt">
-            Kontakt
-          </a>
-        </li>
-
-      </ul>
-
-      <a
-        class="nav-cta"
-        href="tel:+48662715281"
-      >
-        Umów zajęcia
+    <li>
+      <a href="index.html#onas">
+        O nas
       </a>
+    </li>
 
-      <button
-        class="hamb"
-        id="hamb"
-        aria-label="Menu"
-      >
-        ☰
-      </button>
+    <li>
+      <a href="index.html#dlaczego">
+        Dlaczego MUSICA
+      </a>
+    </li>
 
-    </nav>
+    <li>
+      <a class="active" href="aktualnosci.html">
+        Aktualności
+      </a>
+    </li>
 
-  </div>
+    <li>
+      <a href="index.html#kontakt">
+        Kontakt
+      </a>
+    </li>
 
+  </ul>
 
-  <!-- MENU TELEFON -->
 
-  <div
-    class="mobile-menu"
-    id="mobileMenu"
-  >
+  <a class="nav-cta" href="tel:+48662715281">
+    Umów zajęcia
+  </a>
 
-    <a href="index.html">
-      Start
-    </a>
+</nav>
 
-    <a href="index.html#onas">
-      O nas
-    </a>
+</div>
 
-    <a href="index.html#dlaczego">
-      Dlaczego MUSICA
-    </a>
 
-    <a href="aktualnosci.html">
-      Aktualności
-    </a>
 
-    <a href="index.html#kontakt">
-      Kontakt
-    </a>
+<main>
 
-  </div>
 
+<section class="hero">
 
-  <main>
+<div class="wrap">
 
-    <!-- HERO -->
+<div class="hero-box">
 
-    <section class="hero">
+<div class="small">
+MUSICA • STUDIUM MUZYCZNE • EŁK
+</div>
 
-      <div class="wrap">
 
-        <div class="hero-box">
+<h1>
 
-          <div class="eyebrow">
+Co nowego
 
-            MUSICA • Studium Muzyczne • Ełk
+<span>w MUSICA?</span>
 
-          </div>
+</h1>
 
-          <h1>
 
-            Co nowego
+<p>
 
-            <span>
-              w MUSICA?
-            </span>
+Zobacz najnowsze wydarzenia, występy,
+nagrania i informacje ze Studium Muzycznego MUSICA w Ełku.
 
-          </h1>
+</p>
 
-          <p class="hero-desc">
+</div>
 
-            Koncerty, nagrania, wydarzenia i codzienność MUSICA.
-            Najnowsze wpisy z naszego Facebooka pojawiają się tutaj automatycznie.
+</div>
 
-          </p>
+</section>
 
-        </div>
 
-      </div>
 
-    </section>
+<section class="news">
 
+<div class="wrap">
 
-    <!-- AKTUALNOŚCI -->
 
-    <section class="news">
+<div class="title">
 
-      <div class="wrap">
+<small>
+01 — Aktualności
+</small>
 
-        <div class="news-head reveal">
 
-          <small>
+<h2>
 
-            01 — Aktualności
+Najnowsze wpisy
 
-          </small>
+<span>z Facebooka.</span>
 
-          <h2>
+</h2>
 
-            Najnowsze chwile
+</div>
 
-            <em>
-              z życia MUSICA.
-            </em>
 
-          </h2>
 
-        </div>
+<div class="facebook-box">
 
 
-        <div
-          class="posts-grid"
-          id="posts"
-        >
+<div class="facebook-title">
 
-          <div class="status-card">
+<h3>
+MUSICA Studium Muzyczne
+</h3>
 
-            <div>
 
-              <div class="loader"></div>
+<p>
+Najnowsze informacje i wydarzenia publikowane na naszym Facebooku.
+</p>
 
-              <h3>
-                Ładujemy aktualności
-              </h3>
+</div>
 
-              <p>
-                Moment — pobieramy najnowsze wpisy.
-              </p>
 
-            </div>
 
-          </div>
+<div class="facebook-frame">
 
-        </div>
 
+<iframe
 
-        <div class="more-row reveal">
+src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F100063806301540%2F&tabs=timeline&width=500&height=800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false"
 
-          <a
-            class="more-btn"
-            href="https://www.facebook.com/100063806301540/"
-            target="_blank"
-            rel="noopener"
-          >
+width="500"
 
-            Zobacz Facebook MUSICA ↗
+height="800"
 
-          </a>
+style="border:none;overflow:hidden"
 
-        </div>
+scrolling="no"
 
-      </div>
+frameborder="0"
 
-    </section>
+allowfullscreen="true"
 
-  </main>
+allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
 
+</iframe>
 
-  <!-- STOPKA -->
 
-  <footer>
+</div>
 
-    <div class="wrap footer">
 
-      <span>
 
-        © 2026 MUSICA Studium Muzyczne
+<a
+class="facebook-button"
+href="https://www.facebook.com/100063806301540/"
+target="_blank"
+rel="noopener"
+>
+Zobacz więcej na Facebooku ↗
+</a>
 
-      </span>
 
-      <span>
+</div>
 
-        mgr Urszula Staniek • Ełk
 
-      </span>
+</div>
 
-    </div>
+</section>
 
-  </footer>
 
+</main>
 
-  <script>
 
-    const postsEl = document.getElementById("posts");
 
-    const monthNames = [
-      "stycznia",
-      "lutego",
-      "marca",
-      "kwietnia",
-      "maja",
-      "czerwca",
-      "lipca",
-      "sierpnia",
-      "września",
-      "października",
-      "listopada",
-      "grudnia"
-    ];
+<footer>
 
+<div class="wrap footer">
 
-    function esc(value = "") {
+<span>
+© 2026 MUSICA Studium Muzyczne
+</span>
 
-      return String(value)
 
-        .replaceAll("&", "&amp;")
+<span>
+mgr Urszula Staniek • Ełk
+</span>
 
-        .replaceAll("<", "&lt;")
+</div>
 
-        .replaceAll(">", "&gt;")
+</footer>
 
-        .replaceAll('"', "&quot;")
-
-        .replaceAll("'", "&#039;");
-
-    }
-
-
-    function formatDate(value) {
-
-      const d = new Date(value);
-
-      if (Number.isNaN(d.getTime())) {
-
-        return "";
-
-      }
-
-      return `${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`;
-
-    }
-
-
-    function postCard(post, i) {
-
-      const message =
-        post.message?.trim()
-        ||
-        "Nowy wpis na Facebooku MUSICA.";
-
-
-      const image = post.image
-
-        ? `
-
-          <div class="post-image-wrap">
-
-            <img
-              class="post-image"
-              src="${esc(post.image)}"
-              alt=""
-              loading="lazy"
-            >
-
-          </div>
-
-        `
-
-        : `
-
-          <div class="post-no-image">
-
-            MUSICA
-
-          </div>
-
-        `;
-
-
-      return `
-
-        <article
-          class="post-card reveal"
-          style="transition-delay:${Math.min(i * 60, 240)}ms"
-        >
-
-          ${image}
-
-
-          <div class="post-body">
-
-            <div class="post-meta">
-
-              <span>
-
-                <i class="fb-dot"></i>
-
-                MUSICA
-
-              </span>
-
-
-              <time datetime="${esc(post.created_time)}">
-
-                ${esc(formatDate(post.created_time))}
-
-              </time>
-
-            </div>
-
-
-            <div class="post-text">
-
-              ${esc(message)}
-
-            </div>
-
-
-            <div class="post-spacer"></div>
-
-
-            <a
-              class="post-link"
-              href="${esc(post.permalink_url)}"
-              target="_blank"
-              rel="noopener"
-            >
-
-              <span>
-
-                Zobacz cały wpis
-
-              </span>
-
-              <span>
-
-                ↗
-
-              </span>
-
-            </a>
-
-          </div>
-
-        </article>
-
-      `;
-
-    }
-
-
-    function activateReveal() {
-
-      const observer =
-        new IntersectionObserver(
-
-          entries => {
-
-            entries.forEach(
-
-              entry => {
-
-                if (entry.isIntersecting) {
-
-                  entry.target.classList.add("show");
-
-                  observer.unobserve(entry.target);
-
-                }
-
-              }
-
-            );
-
-          },
-
-          {
-            threshold: .08
-          }
-
-        );
-
-
-      document
-        .querySelectorAll(".reveal")
-        .forEach(
-
-          el => observer.observe(el)
-
-        );
-
-    }
-
-
-    async function loadPosts() {
-
-      try {
-
-        const response =
-          await fetch(
-
-            `aktualnosci.json?v=${Date.now()}`,
-
-            {
-              cache: "no-store"
-            }
-
-          );
-
-
-        if (!response.ok) {
-
-          throw new Error(
-            "Brak pliku aktualności"
-          );
-
-        }
-
-
-        const payload =
-          await response.json();
-
-
-        const posts =
-          Array.isArray(payload)
-          ?
-          payload
-          :
-          payload.posts;
-
-
-        if (
-          !Array.isArray(posts)
-          ||
-          posts.length === 0
-        ) {
-
-          postsEl.innerHTML = `
-
-            <div class="status-card">
-
-              <div>
-
-                <h3>
-                  Aktualności są już prawie gotowe
-                </h3>
-
-                <p>
-                  Po pierwszym automatycznym pobraniu postów
-                  pojawią się tutaj eleganckie kafelki.
-                </p>
-
-              </div>
-
-            </div>
-
-          `;
-
-
-          activateReveal();
-
-          return;
-
-        }
-
-
-        postsEl.innerHTML =
-          posts
-            .map(postCard)
-            .join("");
-
-
-        activateReveal();
-
-      }
-
-      catch (error) {
-
-        postsEl.innerHTML = `
-
-          <div class="status-card">
-
-            <div>
-
-              <h3>
-                Nie udało się teraz wczytać aktualności
-              </h3>
-
-              <p>
-                Możesz zobaczyć najnowsze wpisy
-                bezpośrednio na Facebooku MUSICA.
-              </p>
-
-            </div>
-
-          </div>
-
-        `;
-
-
-        activateReveal();
-
-      }
-
-    }
-
-
-    /* MENU TELEFON */
-
-    const hamb =
-      document.getElementById("hamb");
-
-
-    const mobileMenu =
-      document.getElementById("mobileMenu");
-
-
-    hamb.addEventListener(
-
-      "click",
-
-      () => {
-
-        mobileMenu
-          .classList
-          .toggle("open");
-
-
-        hamb.textContent =
-          mobileMenu.classList.contains("open")
-          ?
-          "×"
-          :
-          "☰";
-
-      }
-
-    );
-
-
-    document
-      .querySelectorAll(".mobile-menu a")
-      .forEach(
-
-        a => {
-
-          a.addEventListener(
-
-            "click",
-
-            () => {
-
-              mobileMenu
-                .classList
-                .remove("open");
-
-
-              hamb.textContent = "☰";
-
-            }
-
-          );
-
-        }
-
-      );
-
-
-    activateReveal();
-
-    loadPosts();
-
-  </script>
 
 </body>
+
 </html>
