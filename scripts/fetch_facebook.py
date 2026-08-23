@@ -8,7 +8,7 @@ import urllib.request
 from pathlib import Path
 
 
-API_VERSION = "v25.0"
+API_VERSION = "v26.0"
 
 PAGE_ID = "100063806301540"
 
