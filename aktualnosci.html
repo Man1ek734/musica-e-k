@@ -1,1 +1,607 @@
+<!doctype html>
+<html lang="pl">
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Aktualności | MUSICA Studium Muzyczne</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", Arial, sans-serif;
+      background: #f5f5f2;
+      color: #050505;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .wrap {
+      width: min(calc(100% - 40px), 1240px);
+      margin: auto;
+    }
+
+
+    /* MENU */
+
+    .nav-shell {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(calc(100% - 34px), 1260px);
+      z-index: 100;
+    }
+
+    nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 16px 0 22px;
+
+      background: rgba(255,255,255,.90);
+
+      backdrop-filter: blur(18px);
+
+      border: 1px solid rgba(0,0,0,.08);
+
+      border-radius: 22px;
+
+      box-shadow: 0 18px 55px rgba(0,0,0,.08);
+    }
+
+    .brand img {
+      width: 190px;
+      max-height: 54px;
+      object-fit: contain;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .navlinks a {
+      display: flex;
+      align-items: center;
+
+      height: 42px;
+
+      padding: 0 15px;
+
+      border-radius: 13px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition: .25s;
+    }
+
+    .navlinks a:hover {
+      background: #ededeb;
+    }
+
+    .navlinks .active {
+      background: #050505;
+      color: white;
+    }
+
+    .nav-cta {
+      background: #050505;
+      color: white;
+
+      padding: 14px 20px;
+
+      border-radius: 14px;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+
+    /* NAGŁÓWEK */
+
+    .hero {
+      padding: 150px 0 80px;
+    }
+
+    .hero-box {
+      background: #050505;
+      color: white;
+
+      border-radius: 32px;
+
+      padding: 80px 60px;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .small {
+      font-size: 11px;
+
+      letter-spacing: .18em;
+
+      text-transform: uppercase;
+
+      color: #888;
+
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(55px, 7vw, 100px);
+
+      line-height: .95;
+
+      letter-spacing: -.06em;
+
+      max-width: 900px;
+    }
+
+    h1 span {
+      font-family: "Playfair Display", serif;
+
+      font-style: italic;
+
+      color: #777;
+    }
+
+    .hero p {
+      max-width: 650px;
+
+      color: #aaa;
+
+      font-size: 18px;
+
+      line-height: 1.7;
+
+      margin-top: 30px;
+    }
+
+
+    /* AKTUALNOŚCI */
+
+    .news {
+      padding: 30px 0 120px;
+    }
+
+    .title {
+      display: grid;
+
+      grid-template-columns: .6fr 1.4fr;
+
+      margin-bottom: 60px;
+    }
+
+    .title small {
+      color: #777;
+
+      text-transform: uppercase;
+
+      letter-spacing: .15em;
+
+      font-size: 11px;
+    }
+
+    .title h2 {
+      font-size: clamp(40px, 5vw, 70px);
+
+      letter-spacing: -.05em;
+
+      line-height: 1;
+    }
+
+    .title h2 span {
+      font-family: "Playfair Display", serif;
+
+      font-style: italic;
+    }
+
+
+    /* FACEBOOK */
+
+    .facebook-box {
+      background: white;
+
+      border: 1px solid #ddd;
+
+      border-radius: 28px;
+
+      padding: 45px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      box-shadow: 0 20px 60px rgba(0,0,0,.06);
+    }
+
+    .facebook-title {
+      width: 100%;
+
+      max-width: 700px;
+
+      margin-bottom: 30px;
+    }
+
+    .facebook-title h3 {
+      font-size: 30px;
+
+      margin-bottom: 8px;
+    }
+
+    .facebook-title p {
+      color: #777;
+
+      line-height: 1.6;
+    }
+
+    .facebook-frame {
+      width: 100%;
+
+      max-width: 500px;
+
+      display: flex;
+
+      justify-content: center;
+    }
+
+    iframe {
+      border: none;
+
+      overflow: hidden;
+
+      width: 500px;
+
+      max-width: 100%;
+
+      height: 800px;
+    }
+
+    .facebook-button {
+      margin-top: 30px;
+
+      background: #050505;
+
+      color: white;
+
+      padding: 15px 25px;
+
+      border-radius: 14px;
+
+      font-weight: 700;
+
+      transition: .25s;
+    }
+
+    .facebook-button:hover {
+      transform: translateY(-3px);
+
+      background: #222;
+    }
+
+
+    /* STOPKA */
+
+    footer {
+      border-top: 1px solid #ddd;
+
+      padding: 30px 0 45px;
+
+      color: #777;
+
+      font-size: 12px;
+    }
+
+    .footer {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      flex-wrap: wrap;
+    }
+
+
+    /* TELEFON */
+
+    @media(max-width: 800px) {
+
+      .navlinks {
+        display: none;
+      }
+
+      .nav-cta {
+        font-size: 11px;
+
+        padding: 12px 14px;
+      }
+
+      .brand img {
+        width: 150px;
+      }
+
+      .hero {
+        padding-top: 110px;
+      }
+
+      .hero-box {
+        padding: 55px 25px;
+
+        border-radius: 24px;
+      }
+
+      .title {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+      }
+
+      .facebook-box {
+        padding: 25px 10px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div class="nav-shell">
+
+<nav>
+
+  <a class="brand" href="index.html">
+    <img src="logomuzyka.png" alt="MUSICA Studium Muzyczne">
+  </a>
+
+
+  <ul class="navlinks">
+
+    <li>
+      <a href="index.html">
+        Start
+      </a>
+    </li>
+
+    <li>
+      <a href="index.html#onas">
+        O nas
+      </a>
+    </li>
+
+    <li>
+      <a href="index.html#dlaczego">
+        Dlaczego MUSICA
+      </a>
+    </li>
+
+    <li>
+      <a class="active" href="aktualnosci.html">
+        Aktualności
+      </a>
+    </li>
+
+    <li>
+      <a href="index.html#kontakt">
+        Kontakt
+      </a>
+    </li>
+
+  </ul>
+
+
+  <a class="nav-cta" href="tel:+48662715281">
+
+    Umów zajęcia
+
+  </a>
+
+</nav>
+
+</div>
+
+
+
+<main>
+
+
+<section class="hero">
+
+<div class="wrap">
+
+<div class="hero-box">
+
+<div class="small">
+
+MUSICA • STUDIUM MUZYCZNE • EŁK
+
+</div>
+
+
+<h1>
+
+Co nowego
+
+<span>w MUSICA?</span>
+
+</h1>
+
+
+<p>
+
+Zobacz najnowsze wydarzenia, występy,
+nagrania i informacje ze Studium Muzycznego MUSICA w Ełku.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="news">
+
+<div class="wrap">
+
+
+<div class="title">
+
+<small>
+
+01 — Aktualności
+
+</small>
+
+
+<h2>
+
+Najnowsze wpisy
+
+<span>z Facebooka.</span>
+
+</h2>
+
+</div>
+
+
+
+<div class="facebook-box">
+
+
+<div class="facebook-title">
+
+<h3>
+
+MUSICA Studium Muzyczne
+
+</h3>
+
+
+<p>
+
+Najnowsze wpisy publikowane na naszym Facebooku
+pojawiają się tutaj automatycznie.
+
+</p>
+
+</div>
+
+
+
+<div class="facebook-frame">
+
+
+<iframe
+
+src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F100063806301540%2F&tabs=timeline&width=500&height=800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false"
+
+width="500"
+
+height="800"
+
+style="border:none;overflow:hidden"
+
+scrolling="no"
+
+frameborder="0"
+
+allowfullscreen="true"
+
+allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+
+</iframe>
+
+
+</div>
+
+
+
+<a
+
+class="facebook-button"
+
+href="https://www.facebook.com/100063806301540/"
+
+target="_blank">
+
+Zobacz więcej na Facebooku ↗
+
+</a>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<div class="wrap footer">
+
+<span>
+
+© 2026 MUSICA Studium Muzyczne
+
+</span>
+
+
+<span>
+
+mgr Urszula Staniek • Ełk
+
+</span>
+
+</div>
+
+</footer>
+
+
+</body>
+
+</html>
