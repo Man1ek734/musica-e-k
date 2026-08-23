@@ -1,616 +1,790 @@
 <!doctype html>
 <html lang="pl">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Aktualności | MUSICA Studium Muzyczne</title>
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Aktualności MUSICA Studium Muzyczne w Ełku — najnowsze wydarzenia, występy i informacje.">
+  <title>Aktualności — MUSICA Studium Muzyczne</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
   <style>
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --black:#050505;
+      --black2:#0e0e0e;
+      --white:#fff;
+      --paper:#f5f5f2;
+      --line:#dadada;
+      --muted:#737373;
+      --radius:26px;
+      --max:1240px;
     }
 
-    html {
-      scroll-behavior: smooth;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"DM Sans",Arial,sans-serif;
+      background:var(--paper);
+      color:var(--black);
+      overflow-x:hidden;
+    }
+    body.menu-open{overflow:hidden}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    button{font:inherit}
+    ::selection{background:#111;color:#fff}
+
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+    .serif{font-family:"Playfair Display",Georgia,serif}
+
+    /* MOBILE MENU */
+    .mobile-menu{display:none}
+
+    /* NAV */
+    .nav-shell{
+      position:fixed;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(calc(100% - 34px),1260px);
+      z-index:100;
     }
 
-    body {
-      font-family: "DM Sans", Arial, sans-serif;
-      background: #f5f5f2;
-      color: #050505;
+    nav{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding:0 16px 0 22px;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:0 18px 55px rgba(0,0,0,.08);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-radius:22px;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    .brand{
+      display:flex;
+      align-items:center;
+      min-width:210px;
     }
 
-    .wrap {
-      width: min(calc(100% - 40px), 1240px);
-      margin: auto;
+    .brand img{
+      width:190px;
+      max-height:54px;
+      object-fit:contain;
+      object-position:left center;
     }
 
-    /* MENU */
-
-    .nav-shell {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(calc(100% - 34px), 1260px);
-      z-index: 100;
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      list-style:none;
     }
 
-    nav {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 16px 0 22px;
-
-      background: rgba(255,255,255,.90);
-
-      backdrop-filter: blur(18px);
-
-      border: 1px solid rgba(0,0,0,.08);
-
-      border-radius: 22px;
-
-      box-shadow: 0 18px 55px rgba(0,0,0,.08);
+    .navlinks a{
+      display:inline-flex;
+      align-items:center;
+      height:42px;
+      padding:0 15px;
+      border-radius:13px;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.02em;
+      transition:.25s;
     }
 
-    .brand img {
-      width: 190px;
-      max-height: 54px;
-      object-fit: contain;
+    .navlinks a:hover{background:#ededeb}
+
+    .navlinks a.active{
+      background:#050505;
+      color:#fff;
     }
 
-    .navlinks {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      list-style: none;
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:0 18px;
+      height:46px;
+      color:#fff;
+      background:#050505;
+      border-radius:14px;
+      font-size:13px;
+      font-weight:700;
+      transition:.25s;
     }
 
-    .navlinks a {
-      display: flex;
-      align-items: center;
+    .nav-cta:hover{transform:translateY(-2px);background:#242424}
+    .nav-cta .dot{width:7px;height:7px;border-radius:50%;background:#fff}
 
-      height: 42px;
-
-      padding: 0 15px;
-
-      border-radius: 13px;
-
-      font-size: 13px;
-      font-weight: 700;
-
-      transition: .25s;
-    }
-
-    .navlinks a:hover {
-      background: #ededeb;
-    }
-
-    .navlinks .active {
-      background: #050505;
-      color: white;
-    }
-
-    .nav-cta {
-      background: #050505;
-      color: white;
-
-      padding: 14px 20px;
-
-      border-radius: 14px;
-
-      font-size: 13px;
-      font-weight: 700;
+    .hamb{
+      display:none;
+      border:0;
+      background:#050505;
+      color:#fff;
+      width:46px;height:46px;
+      border-radius:14px;
+      cursor:pointer;
+      font-size:21px;
     }
 
     /* HERO */
-
-    .hero {
-      padding: 150px 0 80px;
+    .hero{
+      padding:124px 0 24px;
     }
 
-    .hero-box {
-      background: #050505;
-      color: white;
-
-      border-radius: 32px;
-
-      padding: 80px 60px;
-
-      position: relative;
-
-      overflow: hidden;
+    .hero-panel{
+      position:relative;
+      min-height:620px;
+      overflow:hidden;
+      background:var(--black);
+      color:#fff;
+      border-radius:34px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      box-shadow:0 40px 100px rgba(0,0,0,.16);
     }
 
-    .hero-box::after {
-      content: "";
-
-      position: absolute;
-
-      width: 450px;
-      height: 450px;
-
-      right: -120px;
-      top: -160px;
-
-      border-radius: 50%;
-
-      border: 1px solid #222;
-
-      box-shadow:
-        0 0 0 70px rgba(255,255,255,.02),
-        0 0 0 140px rgba(255,255,255,.01);
+    .hero-copy{
+      position:relative;
+      z-index:3;
+      padding:clamp(46px,6vw,82px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
     }
 
-    .small {
-      position: relative;
-      z-index: 2;
-
-      font-size: 11px;
-
-      letter-spacing: .18em;
-
-      text-transform: uppercase;
-
-      color: #888;
-
-      margin-bottom: 22px;
+    .badge{
+      width:max-content;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid #2e2e2e;
+      border-radius:999px;
+      padding:9px 13px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:#c9c9c9;
+      margin-bottom:34px;
     }
 
-    h1 {
-      position: relative;
-      z-index: 2;
-
-      font-size: clamp(55px, 7vw, 100px);
-
-      line-height: .95;
-
-      letter-spacing: -.06em;
-
-      max-width: 900px;
+    .badge i{
+      display:block;
+      width:7px;height:7px;
+      background:#fff;
+      border-radius:50%;
+      box-shadow:0 0 0 5px rgba(255,255,255,.08);
     }
 
-    h1 span {
-      display: block;
-
-      font-family: "Playfair Display", serif;
-
-      font-style: italic;
-
-      color: #777;
+    h1{
+      font-size:clamp(58px,7.2vw,108px);
+      line-height:.88;
+      letter-spacing:-.065em;
+      max-width:880px;
+      font-weight:700;
     }
 
-    .hero p {
-      position: relative;
-      z-index: 2;
-
-      max-width: 650px;
-
-      color: #aaa;
-
-      font-size: 18px;
-
-      line-height: 1.7;
-
-      margin-top: 30px;
+    h1 .soft{
+      display:block;
+      color:#7f7f7f;
+      font-weight:600;
+      font-style:italic;
+      letter-spacing:-.055em;
     }
 
-    /* AKTUALNOŚCI */
-
-    .news {
-      padding: 30px 0 120px;
+    .hero-desc{
+      max-width:650px;
+      margin-top:32px;
+      font-size:clamp(16px,1.5vw,19px);
+      line-height:1.75;
+      color:#b8b8b8;
     }
 
-    .title {
-      display: grid;
-
-      grid-template-columns: .6fr 1.4fr;
-
-      margin-bottom: 60px;
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:38px;
     }
 
-    .title small {
-      color: #777;
-
-      text-transform: uppercase;
-
-      letter-spacing: .15em;
-
-      font-size: 11px;
+    .btn{
+      min-height:54px;
+      padding:0 23px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      border-radius:15px;
+      font-weight:700;
+      font-size:14px;
+      transition:.25s ease;
+      border:1px solid transparent;
     }
 
-    .title h2 {
-      font-size: clamp(40px, 5vw, 70px);
+    .btn-white{background:#fff;color:#050505}
+    .btn-white:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(255,255,255,.13)}
+    .btn-ghost{color:#fff;border-color:#343434;background:#111}
+    .btn-ghost:hover{background:#191919;transform:translateY(-3px)}
 
-      letter-spacing: -.05em;
-
-      line-height: 1;
+    /* piano decoration */
+    .piano{
+      position:absolute;
+      right:-4vw;
+      top:8%;
+      width:min(42vw,610px);
+      height:76%;
+      opacity:.94;
+      transform:rotate(-6deg);
+      pointer-events:none;
     }
 
-    .title h2 span {
-      font-family: "Playfair Display", serif;
-
-      font-style: italic;
+    .piano-top{
+      position:absolute;
+      left:0;top:0;
+      width:88%;height:43%;
+      border:1px solid #343434;
+      border-radius:54% 46% 26% 30% / 55% 50% 38% 35%;
+      background:radial-gradient(circle at 20% 20%,#242424 0,#111 31%,#090909 72%);
+      box-shadow:inset 0 0 70px rgba(255,255,255,.03);
     }
 
-    /* FACEBOOK */
-
-    .facebook-box {
-      background: white;
-
-      border: 1px solid #ddd;
-
-      border-radius: 28px;
-
-      padding: 45px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-
-      box-shadow: 0 20px 60px rgba(0,0,0,.06);
+    .keys{
+      position:absolute;
+      left:6%;
+      top:40%;
+      width:90%;
+      height:52%;
+      display:grid;
+      grid-template-columns:repeat(10,1fr);
+      gap:3px;
+      transform:perspective(900px) rotateX(12deg);
+      transform-origin:top;
     }
 
-    .facebook-title {
-      width: 100%;
-
-      max-width: 700px;
-
-      margin-bottom: 30px;
-
-      text-align: center;
+    .key{
+      position:relative;
+      background:#efefed;
+      border-radius:0 0 8px 8px;
+      box-shadow:inset 0 -14px 20px rgba(0,0,0,.07);
     }
 
-    .facebook-title h3 {
-      font-size: 30px;
-
-      margin-bottom: 8px;
+    .key:nth-child(1)::after,.key:nth-child(2)::after,.key:nth-child(4)::after,
+    .key:nth-child(5)::after,.key:nth-child(6)::after,.key:nth-child(8)::after,
+    .key:nth-child(9)::after{
+      content:"";
+      position:absolute;
+      right:-29%;
+      top:0;
+      width:55%;
+      height:60%;
+      background:#0c0c0c;
+      border-radius:0 0 6px 6px;
+      z-index:2;
+      box-shadow:0 10px 20px rgba(0,0,0,.35);
     }
 
-    .facebook-title p {
-      color: #777;
-
-      line-height: 1.6;
+    .grain{
+      position:absolute;inset:0;
+      pointer-events:none;opacity:.18;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.23'/%3E%3C/svg%3E");
+      mix-blend-mode:soft-light;
     }
 
-    .facebook-frame {
-      width: 100%;
-
-      max-width: 500px;
-
-      display: flex;
-
-      justify-content: center;
+    /* CONTENT */
+    .content{
+      padding:120px 0;
     }
 
-    iframe {
-      border: none;
-
-      overflow: hidden;
-
-      width: 500px;
-
-      max-width: 100%;
-
-      height: 800px;
+    .section-top{
+      display:grid;
+      grid-template-columns:.7fr 1.3fr;
+      gap:40px;
+      align-items:start;
+      margin-bottom:68px;
     }
 
-    .facebook-button {
-      margin-top: 30px;
-
-      background: #050505;
-
-      color: white;
-
-      padding: 15px 25px;
-
-      border-radius: 14px;
-
-      font-weight: 700;
-
-      transition: .25s;
+    .eyebrow{
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#777;
+      padding-top:13px;
     }
 
-    .facebook-button:hover {
-      transform: translateY(-3px);
-
-      background: #222;
+    .section-title{
+      font-size:clamp(42px,5vw,76px);
+      line-height:1.02;
+      letter-spacing:-.05em;
+      max-width:880px;
     }
 
-    /* STOPKA */
-
-    footer {
-      border-top: 1px solid #ddd;
-
-      padding: 30px 0 45px;
-
-      color: #777;
-
-      font-size: 12px;
+    .section-title em{
+      font-family:"Playfair Display",Georgia,serif;
+      font-weight:600;
     }
 
-    .footer {
-      display: flex;
-
-      justify-content: space-between;
-
-      gap: 20px;
-
-      flex-wrap: wrap;
+    /* FACEBOOK AREA */
+    .news-layout{
+      display:grid;
+      grid-template-columns:.72fr 1.28fr;
+      gap:18px;
+      align-items:stretch;
     }
 
-    /* TELEFON */
+    .news-info{
+      position:relative;
+      overflow:hidden;
+      min-height:660px;
+      padding:42px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      background:#050505;
+      color:#fff;
+      border-radius:26px;
+    }
 
-    @media(max-width: 800px) {
+    .news-info small{
+      color:#777;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+    }
 
-      .navlinks {
-        display: none;
+    .news-info h3{
+      margin-top:20px;
+      max-width:430px;
+      font-size:clamp(36px,4vw,56px);
+      line-height:1;
+      letter-spacing:-.05em;
+    }
+
+    .news-info h3 em{
+      font-family:"Playfair Display",Georgia,serif;
+      font-weight:600;
+    }
+
+    .news-info p{
+      max-width:430px;
+      color:#aaa;
+      font-size:16px;
+      line-height:1.7;
+    }
+
+    .news-ring{
+      position:absolute;
+      width:340px;height:340px;
+      right:-130px;top:-110px;
+      border:1px solid #222;
+      border-radius:50%;
+    }
+
+    .news-ring::after{
+      content:"";
+      position:absolute;
+      inset:55px;
+      border:1px solid #1e1e1e;
+      border-radius:50%;
+    }
+
+    .facebook-card{
+      min-height:660px;
+      padding:36px;
+      background:#fff;
+      border:1px solid #dfdfdb;
+      border-radius:26px;
+      box-shadow:0 24px 70px rgba(0,0,0,.07);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    .facebook-head{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:28px;
+      padding-bottom:22px;
+      border-bottom:1px solid #e5e5e2;
+    }
+
+    .facebook-head small{
+      display:block;
+      color:#777;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      margin-bottom:6px;
+    }
+
+    .facebook-head strong{
+      font-size:24px;
+      letter-spacing:-.03em;
+    }
+
+    .fb-icon{
+      width:48px;height:48px;
+      display:grid;
+      place-items:center;
+      flex:0 0 48px;
+      border-radius:50%;
+      background:#050505;
+      color:#fff;
+      font-size:22px;
+      font-weight:700;
+    }
+
+    .facebook-frame{
+      width:100%;
+      max-width:500px;
+      flex:1;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    iframe{
+      border:none;
+      overflow:hidden;
+      width:500px;
+      max-width:100%;
+      height:760px;
+      border-radius:16px;
+    }
+
+    .facebook-bottom{
+      width:100%;
+      margin-top:26px;
+      padding-top:22px;
+      border-top:1px solid #e5e5e2;
+      display:flex;
+      justify-content:center;
+    }
+
+    .fb-button{
+      min-height:52px;
+      padding:0 22px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border-radius:15px;
+      background:#050505;
+      color:#fff;
+      font-weight:700;
+      font-size:14px;
+      transition:.25s;
+    }
+
+    .fb-button:hover{transform:translateY(-3px);background:#242424}
+
+    /* FOOTER */
+    footer{
+      padding:30px 0 44px;
+    }
+
+    .footer{
+      border-top:1px solid #d8d8d4;
+      padding-top:24px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      font-size:12px;
+      color:#777;
+    }
+
+    /* ANIMATION */
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .8s ease,transform .8s ease;
+    }
+    .reveal.show{opacity:1;transform:none}
+
+    /* MOBILE */
+    @media(max-width:980px){
+      .navlinks,.nav-cta{display:none}
+      .hamb{display:grid;place-items:center}
+      .brand img{width:170px}
+
+      .mobile-menu{
+        position:fixed;
+        inset:0;
+        z-index:90;
+        background:#050505;
+        color:#fff;
+        padding:120px 28px 35px;
+        display:flex;
+        flex-direction:column;
+        transform:translateY(-105%);
+        transition:.4s cubic-bezier(.2,.7,.2,1);
       }
 
-      .nav-cta {
-        font-size: 11px;
+      .mobile-menu.open{transform:translateY(0)}
 
-        padding: 12px 14px;
+      .mobile-menu a{
+        font-size:42px;
+        line-height:1;
+        letter-spacing:-.04em;
+        padding:18px 0;
+        border-bottom:1px solid #222;
       }
 
-      .brand img {
-        width: 150px;
-      }
+      .hero-panel{grid-template-columns:1fr;min-height:720px}
+      .hero-copy{padding:60px 34px 260px}
+      .piano{width:70vw;height:42%;top:auto;bottom:2%;right:-9vw}
 
-      .hero {
-        padding-top: 110px;
-      }
-
-      .hero-box {
-        padding: 55px 25px;
-
-        border-radius: 24px;
-      }
-
-      .title {
-        grid-template-columns: 1fr;
-
-        gap: 15px;
-      }
-
-      .facebook-box {
-        padding: 25px 10px;
-      }
-
+      .section-top{grid-template-columns:1fr;gap:20px}
+      .news-layout{grid-template-columns:1fr}
+      .news-info{min-height:420px}
+      .facebook-card{min-height:620px}
+      .content{padding:95px 0}
     }
 
+    @media(max-width:620px){
+      .wrap{width:min(calc(100% - 24px),var(--max))}
+      .nav-shell{top:10px;width:calc(100% - 20px)}
+      nav{height:66px;padding-left:14px;border-radius:18px}
+      .brand img{width:145px}
+      .hamb{width:42px;height:42px;border-radius:12px}
+
+      .hero{padding-top:88px}
+      .hero-panel{border-radius:25px;min-height:670px}
+      .hero-copy{padding:48px 24px 260px}
+      h1{font-size:clamp(50px,16vw,76px)}
+      .hero-desc{font-size:15px}
+      .hero-actions{flex-direction:column}
+      .hero-actions .btn{width:100%}
+
+      .content{padding:76px 0}
+      .section-title{font-size:44px}
+
+      .news-info{padding:30px;border-radius:22px}
+      .facebook-card{padding:22px 10px;border-radius:22px}
+      .facebook-head{padding:0 10px 20px}
+      iframe{height:700px}
+    }
   </style>
-
 </head>
-
 
 <body>
 
-
-<div class="nav-shell">
-
-<nav>
-
-  <a class="brand" href="index.html">
-    <img src="logomuzyka.png" alt="MUSICA Studium Muzyczne">
-  </a>
-
-
-  <ul class="navlinks">
-
-    <li>
-      <a href="index.html">
-        Start
+  <div class="nav-shell">
+    <nav>
+      <a class="brand" href="index.html">
+        <img src="logomuzyka.png" alt="MUSICA Studium Muzyczne">
       </a>
-    </li>
 
-    <li>
-      <a href="index.html#onas">
-        O nas
+      <ul class="navlinks">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="index.html#onas">O nas</a></li>
+        <li><a href="index.html#dlaczego">Dlaczego MUSICA</a></li>
+        <li><a class="active" href="aktualnosci.html">Aktualności</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+      </ul>
+
+      <a class="nav-cta" href="tel:+48662715281">
+        <span class="dot"></span>
+        Umów zajęcia
       </a>
-    </li>
 
-    <li>
-      <a href="index.html#dlaczego">
-        Dlaczego MUSICA
-      </a>
-    </li>
-
-    <li>
-      <a class="active" href="aktualnosci.html">
-        Aktualności
-      </a>
-    </li>
-
-    <li>
-      <a href="index.html#kontakt">
-        Kontakt
-      </a>
-    </li>
-
-  </ul>
-
-
-  <a class="nav-cta" href="tel:+48662715281">
-    Umów zajęcia
-  </a>
-
-</nav>
-
-</div>
-
-
-
-<main>
-
-
-<section class="hero">
-
-<div class="wrap">
-
-<div class="hero-box">
-
-<div class="small">
-MUSICA • STUDIUM MUZYCZNE • EŁK
-</div>
-
-
-<h1>
-
-Co nowego
-
-<span>w MUSICA?</span>
-
-</h1>
-
-
-<p>
-
-Zobacz najnowsze wydarzenia, występy,
-nagrania i informacje ze Studium Muzycznego MUSICA w Ełku.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<section class="news">
-
-<div class="wrap">
-
-
-<div class="title">
-
-<small>
-01 — Aktualności
-</small>
-
-
-<h2>
-
-Najnowsze wpisy
-
-<span>z Facebooka.</span>
-
-</h2>
-
-</div>
-
-
-
-<div class="facebook-box">
-
-
-<div class="facebook-title">
-
-<h3>
-MUSICA Studium Muzyczne
-</h3>
-
-
-<p>
-Najnowsze informacje i wydarzenia publikowane na naszym Facebooku.
-</p>
-
-</div>
-
-
-
-<div class="facebook-frame">
-
-
-<iframe
-
-src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F100063806301540%2F&tabs=timeline&width=500&height=800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false"
-
-width="500"
-
-height="800"
-
-style="border:none;overflow:hidden"
-
-scrolling="no"
-
-frameborder="0"
-
-allowfullscreen="true"
-
-allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-
-</iframe>
-
-
-</div>
-
-
-
-<a
-class="facebook-button"
-href="https://www.facebook.com/100063806301540/"
-target="_blank"
-rel="noopener"
->
-Zobacz więcej na Facebooku ↗
-</a>
-
-
-</div>
-
-
-</div>
-
-</section>
-
-
-</main>
-
-
-
-<footer>
-
-<div class="wrap footer">
-
-<span>
-© 2026 MUSICA Studium Muzyczne
-</span>
-
-
-<span>
-mgr Urszula Staniek • Ełk
-</span>
-
-</div>
-
-</footer>
-
+      <button class="hamb" id="hamb" aria-label="Menu">☰</button>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Start</a>
+    <a href="index.html#onas">O nas</a>
+    <a href="index.html#dlaczego">Dlaczego MUSICA</a>
+    <a href="aktualnosci.html">Aktualności</a>
+    <a href="index.html#kontakt">Kontakt</a>
+  </div>
+
+  <main>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-panel">
+
+          <div class="grain"></div>
+
+          <div class="hero-copy">
+            <div class="badge">
+              <i></i>
+              Aktualności • MUSICA • Ełk
+            </div>
+
+            <h1>
+              Co nowego
+              <span class="soft serif">w MUSICA?</span>
+            </h1>
+
+            <p class="hero-desc">
+              Koncerty, występy, nagrania i codzienność Studium Muzycznego.
+              Zobacz najnowsze informacje publikowane na naszym Facebooku.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-white" href="#najnowsze">Zobacz aktualności ↘</a>
+              <a class="btn btn-ghost" href="index.html">Wróć na stronę główną</a>
+            </div>
+          </div>
+
+          <div class="piano" aria-hidden="true">
+            <div class="piano-top"></div>
+            <div class="keys">
+              <div class="key"></div>
+              <div class="key"></div>
+              <div class="key"></div>
+              <div class="key"></div>
+              <div class="key"></div>
+              <div class="key"></div>
+              <div class="key"></div>
+              <div class="key"></div>
+              <div class="key"></div>
+              <div class="key"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="content" id="najnowsze">
+      <div class="wrap">
+
+        <div class="section-top reveal">
+          <div class="eyebrow">01 — Aktualności</div>
+
+          <h2 class="section-title">
+            Najnowsze chwile
+            <em>z życia MUSICA.</em>
+          </h2>
+        </div>
+
+        <div class="news-layout">
+
+          <aside class="news-info reveal">
+            <div class="news-ring"></div>
+
+            <div>
+              <small>MUSICA / FACEBOOK</small>
+
+              <h3>
+                Bądź
+                <em>na bieżąco.</em>
+              </h3>
+            </div>
+
+            <div>
+              <p>
+                Tutaj znajdziesz najnowsze wpisy, wydarzenia, nagrania
+                i informacje ze Studium Muzycznego MUSICA w Ełku.
+              </p>
+
+              <a
+                class="btn btn-white"
+                href="https://www.facebook.com/100063806301540/"
+                target="_blank"
+                rel="noopener"
+                style="margin-top:28px"
+              >
+                Otwórz Facebook ↗
+              </a>
+            </div>
+          </aside>
+
+          <div class="facebook-card reveal">
+
+            <div class="facebook-head">
+              <div>
+                <small>Najnowsze wpisy</small>
+                <strong>MUSICA Studium Muzyczne</strong>
+              </div>
+
+              <div class="fb-icon">f</div>
+            </div>
+
+            <div class="facebook-frame">
+              <iframe
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F100063806301540%2F&tabs=timeline&width=500&height=760&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false"
+                width="500"
+                height="760"
+                style="border:none;overflow:hidden"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+              </iframe>
+            </div>
+
+            <div class="facebook-bottom">
+              <a
+                class="fb-button"
+                href="https://www.facebook.com/100063806301540/"
+                target="_blank"
+                rel="noopener"
+              >
+                Zobacz wszystkie wpisy ↗
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer">
+      <span>© 2026 MUSICA Studium Muzyczne</span>
+      <span>mgr Urszula Staniek • Ełk</span>
+    </div>
+  </footer>
+
+  <script>
+    const hamb = document.getElementById("hamb");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    hamb.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+      document.body.classList.toggle("menu-open");
+      hamb.textContent = mobileMenu.classList.contains("open") ? "×" : "☰";
+    });
+
+    document.querySelectorAll(".mobile-menu a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        hamb.textContent = "☰";
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12});
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
 
 </body>
-
 </html>
