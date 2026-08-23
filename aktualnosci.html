@@ -334,69 +334,11 @@
 
     /* FACEBOOK AREA */
     .news-layout{
-      display:grid;
-      grid-template-columns:.72fr 1.28fr;
-      gap:18px;
-      align-items:stretch;
-    }
-
-    .news-info{
-      position:relative;
-      overflow:hidden;
-      min-height:660px;
-      padding:42px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      background:#050505;
-      color:#fff;
-      border-radius:26px;
-    }
-
-    .news-info small{
-      color:#777;
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-    }
-
-    .news-info h3{
-      margin-top:20px;
-      max-width:430px;
-      font-size:clamp(36px,4vw,56px);
-      line-height:1;
-      letter-spacing:-.05em;
-    }
-
-    .news-info h3 em{
-      font-family:"Playfair Display",Georgia,serif;
-      font-weight:600;
-    }
-
-    .news-info p{
-      max-width:430px;
-      color:#aaa;
-      font-size:16px;
-      line-height:1.7;
-    }
-
-    .news-ring{
-      position:absolute;
-      width:340px;height:340px;
-      right:-130px;top:-110px;
-      border:1px solid #222;
-      border-radius:50%;
-    }
-
-    .news-ring::after{
-      content:"";
-      position:absolute;
-      inset:55px;
-      border:1px solid #1e1e1e;
-      border-radius:50%;
+      display:block;
     }
 
     .facebook-card{
+      width:100%;
       min-height:660px;
       padding:36px;
       background:#fff;
@@ -406,6 +348,7 @@
       display:flex;
       flex-direction:column;
       align-items:center;
+      overflow:hidden;
     }
 
     .facebook-head{
@@ -452,12 +395,13 @@
       display:flex;
       justify-content:center;
       align-items:flex-start;
+      overflow:hidden;
     }
 
-    iframe{
+    #facebookIframe{
+      display:block;
       border:none;
       overflow:hidden;
-      width:500px;
       max-width:100%;
       height:760px;
       border-radius:16px;
@@ -546,8 +490,6 @@
       .piano{width:70vw;height:42%;top:auto;bottom:2%;right:-9vw}
 
       .section-top{grid-template-columns:1fr;gap:20px}
-      .news-layout{grid-template-columns:1fr}
-      .news-info{min-height:420px}
       .facebook-card{min-height:620px}
       .content{padding:95px 0}
     }
@@ -570,10 +512,47 @@
       .content{padding:76px 0}
       .section-title{font-size:44px}
 
-      .news-info{padding:30px;border-radius:22px}
-      .facebook-card{padding:22px 10px;border-radius:22px}
-      .facebook-head{padding:0 10px 20px}
-      iframe{height:700px}
+      .facebook-card{
+        padding:20px 8px;
+        border-radius:22px;
+      }
+
+      .facebook-head{
+        padding:0 10px 18px;
+        margin-bottom:20px;
+        align-items:flex-start;
+      }
+
+      .facebook-head strong{
+        font-size:20px;
+        line-height:1.15;
+      }
+
+      .fb-icon{
+        width:42px;
+        height:42px;
+        flex-basis:42px;
+        font-size:20px;
+      }
+
+      .facebook-frame{
+        max-width:100%;
+      }
+
+      #facebookIframe{
+        height:700px;
+        border-radius:12px;
+      }
+
+      .facebook-bottom{
+        padding:18px 10px 0;
+        margin-top:18px;
+      }
+
+      .fb-button{
+        width:100%;
+        justify-content:center;
+      }
     }
   </style>
 </head>
@@ -675,36 +654,6 @@
 
         <div class="news-layout">
 
-          <aside class="news-info reveal">
-            <div class="news-ring"></div>
-
-            <div>
-              <small>MUSICA / FACEBOOK</small>
-
-              <h3>
-                Bądź
-                <em>na bieżąco.</em>
-              </h3>
-            </div>
-
-            <div>
-              <p>
-                Tutaj znajdziesz najnowsze wpisy, wydarzenia, nagrania
-                i informacje ze Studium Muzycznego MUSICA w Ełku.
-              </p>
-
-              <a
-                class="btn btn-white"
-                href="https://www.facebook.com/100063806301540/"
-                target="_blank"
-                rel="noopener"
-                style="margin-top:28px"
-              >
-                Otwórz Facebook ↗
-              </a>
-            </div>
-          </aside>
-
           <div class="facebook-card reveal">
 
             <div class="facebook-head">
@@ -718,10 +667,8 @@
 
             <div class="facebook-frame">
               <iframe
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F100063806301540%2F&tabs=timeline&width=500&height=760&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false"
-                width="500"
-                height="760"
-                style="border:none;overflow:hidden"
+                id="facebookIframe"
+                title="Facebook MUSICA Studium Muzyczne"
                 scrolling="no"
                 frameborder="0"
                 allowfullscreen="true"
@@ -772,6 +719,42 @@
         document.body.classList.remove("menu-open");
         hamb.textContent = "☰";
       });
+    });
+
+    const facebookIframe = document.getElementById("facebookIframe");
+    const facebookFrame = document.querySelector(".facebook-frame");
+
+    function resizeFacebook(){
+      if(!facebookIframe || !facebookFrame) return;
+
+      const available = Math.floor(facebookFrame.clientWidth);
+      const width = Math.max(180, Math.min(500, available));
+
+      const url =
+        "https://www.facebook.com/plugins/page.php" +
+        "?href=https%3A%2F%2Fwww.facebook.com%2F100063806301540%2F" +
+        "&tabs=timeline" +
+        "&width=" + width +
+        "&height=760" +
+        "&small_header=true" +
+        "&adapt_container_width=true" +
+        "&hide_cover=false" +
+        "&show_facepile=false";
+
+      if(facebookIframe.dataset.width !== String(width)){
+        facebookIframe.dataset.width = String(width);
+        facebookIframe.width = width;
+        facebookIframe.style.width = width + "px";
+        facebookIframe.src = url;
+      }
+    }
+
+    resizeFacebook();
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resizeFacebook, 180);
     });
 
     const observer = new IntersectionObserver(entries => {
