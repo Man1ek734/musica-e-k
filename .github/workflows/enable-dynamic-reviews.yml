@@ -1,0 +1,53 @@
+name: Enable dynamic reviews page
+
+on:
+  push:
+    paths:
+      - '.github/workflows/enable-dynamic-reviews.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add dynamic reviews script
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('opinie.html')
+          text = path.read_text(encoding='utf-8')
+          original = text
+
+          script = '  <script src="reviews.js" defer></script>\n'
+          if 'src="reviews.js"' not in text:
+              text = text.replace('</head>', script + '</head>', 1)
+
+          old_note = 'Zakładka jest przygotowana pod automatyczną synchronizację opinii. Samo bezpieczne pobieranie nowych recenzji wymaga jeszcze podłączenia źródła Google/API albo widgetu — klucza API nie należy wpisywać publicznie do kodu GitHub Pages.'
+          new_note = 'Opinie w tej sekcji są przygotowane do automatycznej synchronizacji z wizytówką Google.'
+          text = text.replace(old_note, new_note)
+
+          if text != original:
+              path.write_text(text, encoding='utf-8')
+              print('Updated opinie.html')
+          else:
+              print('opinie.html already configured')
+          PY
+
+      - name: Commit page update
+        shell: bash
+        run: |
+          if git diff --quiet -- opinie.html; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add opinie.html
+          git commit -m "Enable automatic review rendering"
+          git push
