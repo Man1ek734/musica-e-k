@@ -1,0 +1,60 @@
+name: Simplify Opinie page
+
+on:
+  push:
+    paths:
+      - '.github/workflows/simplify-opinie.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Remove static rating and leave Google Maps button
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('opinie.html')
+          text = path.read_text(encoding='utf-8')
+
+          new_section = '''    <section class="content" id="opinie">
+      <div class="wrap">
+        <div class="section-top reveal">
+          <div class="eyebrow">01 — Opinie</div>
+          <h2 class="section-title">Sprawdź aktualne opinie <em>w Google.</em></h2>
+        </div>
+
+        <div class="google-actions reveal" style="margin-top:0">
+          <p style="max-width:720px;margin:0 auto 28px;color:#666;font-size:17px;line-height:1.7">
+            Wszystkie aktualne opinie i ocena MUSICA Studium Muzyczne są dostępne bezpośrednio w Google Maps.
+          </p>
+          <a class="google-button" href="https://www.google.com/maps/search/?api=1&query=MUSICA%20Studium%20Muzyczne%20E%C5%82k" target="_blank" rel="noopener">
+            Zobacz opinie w Google ↗
+          </a>
+        </div>
+      </div>
+    </section>'''
+
+          text2, n = re.subn(r'    <section class="content" id="opinie">.*?    </section>', new_section, text, count=1, flags=re.S)
+          if n != 1:
+              raise SystemExit('Nie znaleziono sekcji Opinie do podmiany')
+
+          path.write_text(text2, encoding='utf-8')
+          print('Updated opinie.html')
+          PY
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add opinie.html
+          git commit -m "Remove static rating from Opinie page"
+          git push
